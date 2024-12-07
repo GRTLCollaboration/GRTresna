@@ -44,14 +44,14 @@ void ParseBC(FArrayBox &a_state, const Box &a_valid,
         // this will populate the multigrid boundaries according to the BCs
         // in particular it will fill cells for Aij, and updated K
         solver_boundaries.fill_constraint_box(Side::Lo, a_state,
-                                              Interval(0, NUM_CONSTRAINT_VARS));
+                                              Interval(0, NUM_CONSTRAINT_VARS - 1));
         solver_boundaries.fill_constraint_box(Side::Hi, a_state,
-                                              Interval(0, NUM_CONSTRAINT_VARS));
+                                              Interval(0, NUM_CONSTRAINT_VARS - 1));
         // Do it twice to catch corners... must be a better way
         // but for now this works
         solver_boundaries.fill_constraint_box(Side::Lo, a_state,
-                                              Interval(0, NUM_CONSTRAINT_VARS));
+                                              Interval(0, NUM_CONSTRAINT_VARS - 1));
         solver_boundaries.fill_constraint_box(Side::Hi, a_state,
-                                              Interval(0, NUM_CONSTRAINT_VARS));
+                                              Interval(0, NUM_CONSTRAINT_VARS - 1));
     }
 }
