@@ -250,11 +250,6 @@ GRSolver<method_t, matter_t>::~GRSolver()
 {
 
     delete grids;
-    delete method;
-    delete matter;
-    // TODO: Fix this?
-    //  delete tagging_criterion; // There is some issue here when deleting
-    //  (double free or corruption (!prev))
     delete psi_and_Aij_functions;
     delete diagnostics;
 
@@ -263,8 +258,6 @@ GRSolver<method_t, matter_t>::~GRSolver()
         delete multigrid_vars[ilev];
         delete constraint_vars[ilev];
         delete rhs[ilev];
-        delete aCoef[ilev];
-        delete bCoef[ilev];
         delete diagnostic_vars[ilev];
     }
 }
