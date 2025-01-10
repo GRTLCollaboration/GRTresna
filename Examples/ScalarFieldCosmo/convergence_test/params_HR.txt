@@ -67,10 +67,13 @@ use_compact_Vi_ansatz = 0
 
 # Set method to fill the ghosts in GRChombo outputs
 # and between NL iterations
-# 0 = extrapolating, with zero dpsi and zero gradient Vi at boundaries
+# 0 = extrapolating (by default the quantities in ConstraintVariables.hpp are zeroed at boundaries)
 # 1 = reflective, with parity set as in UserVariables files
 hi_boundary = 0 0 0
 lo_boundary = 0 0 0
+
+# Optionally use extrapolation for the Vi variables. Note that in this 
+# case you should probably set the deactivate_zero_mode param to true
 # Vi_extrapolated_at_boundary = 0
 
 # This order is used to fill ghosts for K and Aij, usually linear
