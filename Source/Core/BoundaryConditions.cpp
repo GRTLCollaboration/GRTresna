@@ -356,7 +356,7 @@ void BoundaryConditions::fill_constraint_box(const Side::LoHiSide a_side,
                 // simplest case - boundary values are extrapolated
                 case EXTRAPOLATING_BC:
                 {
-                    // zero for dpsi
+                    // zero for psi
                     fill_constant_cell(a_state, iv, a_side, idir, psi_comps,
                                        0.0);
 
