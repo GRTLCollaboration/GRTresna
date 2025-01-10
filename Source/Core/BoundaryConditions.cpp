@@ -360,14 +360,17 @@ void BoundaryConditions::fill_constraint_box(const Side::LoHiSide a_side,
                     fill_constant_cell(a_state, iv, a_side, idir, psi_comps,
                                        0.0);
 
-                    fill_constant_cell(a_state, iv, a_side, idir, Vi_comps,
-                                       0.0);
-
                     if (m_params.Vi_extrapolated_at_boundary)
                     {
                         int extrapolation_order = 0;
                         fill_extrapolating_cell(a_state, iv, a_side, idir,
                                                 Vi_comps, extrapolation_order);
+                    }
+                    else
+                    {
+
+                        fill_constant_cell(a_state, iv, a_side, idir, Vi_comps,
+                                           0.0);
                     }
                     break;
                 }
@@ -439,12 +442,16 @@ void BoundaryConditions::fill_boundary_cells_dir(
                     fill_constant_cell(out_box, iv, a_side, dir, psi_comps,
                                        1.0);
 
-                    fill_constant_cell(out_box, iv, a_side, dir, Vi_comps, 0.0);
                     if (m_params.Vi_extrapolated_at_boundary)
                     {
                         int extrapolation_order = 0;
                         fill_extrapolating_cell(out_box, iv, a_side, dir,
                                                 Vi_comps, extrapolation_order);
+                    }
+                    else
+                    {
+                        fill_constant_cell(out_box, iv, a_side, dir, Vi_comps,
+                                           0.0);
                     }
                 }
                 else
