@@ -33,7 +33,7 @@ BoundaryConditions::params_t::params_t()
     vars_parity_grchombo = GRChomboVariables::vars_parity;
     vars_parity_constraint = ConstraintVariables::vars_parity;
     extrapolation_order = 1;
-    deactivate_zero_mode = false;
+    Vi_extrapolated_at_boundary = false;
 }
 
 void BoundaryConditions::params_t::set_is_periodic(
@@ -104,7 +104,7 @@ void BoundaryConditions::params_t::read_params(GRParmParse &pp)
     if (pp.contains("lo_boundary"))
         set_lo_boundary(loBoundary);
 
-    pp.load("deactivate_zero_mode", deactivate_zero_mode, false);
+    pp.load("Vi_extrapolated_at_boundary", Vi_extrapolated_at_boundary, false);
 
     if (extrapolating_boundaries_exist)
     {
@@ -360,13 +360,14 @@ void BoundaryConditions::fill_constraint_box(const Side::LoHiSide a_side,
                     fill_constant_cell(a_state, iv, a_side, idir, psi_comps,
                                        0.0);
 
-                    int extrapolation_order = 0;
-                    fill_extrapolating_cell(a_state, iv, a_side, idir, Vi_comps,
-                                            extrapolation_order);
-                    if (m_params.deactivate_zero_mode)
+                    fill_constant_cell(a_state, iv, a_side, idir, Vi_comps,
+                                       0.0);
+
+                    if (m_params.Vi_extrapolated_at_boundary)
                     {
-                        fill_constant_cell(a_state, iv, a_side, idir, Vi_comps,
-                                           0.0);
+                        int extrapolation_order = 0;
+                        fill_extrapolating_cell(a_state, iv, a_side, idir,
+                                                Vi_comps, extrapolation_order);
                     }
                     break;
                 }
@@ -438,13 +439,12 @@ void BoundaryConditions::fill_boundary_cells_dir(
                     fill_constant_cell(out_box, iv, a_side, dir, psi_comps,
                                        1.0);
 
-                    int extrapolation_order = 0;
-                    fill_extrapolating_cell(out_box, iv, a_side, dir, Vi_comps,
-                                            extrapolation_order);
-                    if (m_params.deactivate_zero_mode)
+                    fill_constant_cell(out_box, iv, a_side, dir, Vi_comps, 0.0);
+                    if (m_params.Vi_extrapolated_at_boundary)
                     {
-                        fill_constant_cell(out_box, iv, a_side, dir, Vi_comps,
-                                           0.0);
+                        int extrapolation_order = 0;
+                        fill_extrapolating_cell(out_box, iv, a_side, dir,
+                                                Vi_comps, extrapolation_order);
                     }
                 }
                 else

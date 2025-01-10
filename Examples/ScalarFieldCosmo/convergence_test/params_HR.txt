@@ -71,6 +71,7 @@ use_compact_Vi_ansatz = 0
 # 1 = reflective, with parity set as in UserVariables files
 hi_boundary = 0 0 0
 lo_boundary = 0 0 0
+# Vi_extrapolated_at_boundary = 0
 
 # This order is used to fill ghosts for K and Aij, usually linear
 # and for GRChombo vars where fewer ghosts than solver
