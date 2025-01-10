@@ -55,6 +55,7 @@ class BoundaryConditions
         std::array<int, NUM_GRCHOMBO_VARS> vars_parity_grchombo;
         std::array<int, NUM_CONSTRAINT_VARS> vars_parity_constraint;
         int extrapolation_order;
+        bool deactivate_zero_mode;
         params_t(); // sets the defaults
         void
         set_is_periodic(const std::array<bool, CH_SPACEDIM> &a_is_periodic);

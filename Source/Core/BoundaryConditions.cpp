@@ -33,6 +33,7 @@ BoundaryConditions::params_t::params_t()
     vars_parity_grchombo = GRChomboVariables::vars_parity;
     vars_parity_constraint = ConstraintVariables::vars_parity;
     extrapolation_order = 1;
+    deactivate_zero_mode = false;
 }
 
 void BoundaryConditions::params_t::set_is_periodic(
@@ -102,6 +103,8 @@ void BoundaryConditions::params_t::read_params(GRParmParse &pp)
     pp.load("lo_boundary", loBoundary, lo_boundary);
     if (pp.contains("lo_boundary"))
         set_lo_boundary(loBoundary);
+
+    pp.load("deactivate_zero_mode", deactivate_zero_mode, false);
 
     if (extrapolating_boundaries_exist)
     {
@@ -357,14 +360,14 @@ void BoundaryConditions::fill_constraint_box(const Side::LoHiSide a_side,
                     fill_constant_cell(a_state, iv, a_side, idir, psi_comps,
                                        0.0);
 
-                    // TODO: Check if reinstating this improves solver?
-                    // const extrapolating for V_i (means Aij = 0)
-                    // int extrapolation_order = 0;
-                    // fill_extrapolating_cell(a_state, iv, a_side, idir,
-                    //                        Vi_comps, extrapolation_order);
-
-                    fill_constant_cell(a_state, iv, a_side, idir, Vi_comps,
-                                       0.0);
+                    int extrapolation_order = 0;
+                    fill_extrapolating_cell(a_state, iv, a_side, idir, Vi_comps,
+                                            extrapolation_order);
+                    if (m_params.deactivate_zero_mode)
+                    {
+                        fill_constant_cell(a_state, iv, a_side, idir, Vi_comps,
+                                           0.0);
+                    }
                     break;
                 }
                 // Enforce a reflective symmetry in some direction
@@ -379,9 +382,9 @@ void BoundaryConditions::fill_constraint_box(const Side::LoHiSide a_side,
                     MayDay::Error(
                         "BoundaryCondition::Supplied boundary not supported.");
                 } // end switch
-            }     // end iterate over box
-        }         // end isperiodic
-    }             // end idir
+            } // end iterate over box
+        } // end isperiodic
+    } // end idir
 }
 
 /// Fill the boundary values appropriately based on the params set
@@ -435,14 +438,14 @@ void BoundaryConditions::fill_boundary_cells_dir(
                     fill_constant_cell(out_box, iv, a_side, dir, psi_comps,
                                        1.0);
 
-                    // TODO: Again check if this changes things
-                    // and if not remove
-                    // int extrapolation_order = 0;
-                    // fill_extrapolating_cell(out_box, iv, a_side, dir,
-                    // Vi_comps,
-                    //                        extrapolation_order);
-
-                    fill_constant_cell(out_box, iv, a_side, dir, Vi_comps, 0.0);
+                    int extrapolation_order = 0;
+                    fill_extrapolating_cell(out_box, iv, a_side, dir, Vi_comps,
+                                            extrapolation_order);
+                    if (m_params.deactivate_zero_mode)
+                    {
+                        fill_constant_cell(out_box, iv, a_side, dir, Vi_comps,
+                                           0.0);
+                    }
                 }
                 else
                 {
@@ -463,8 +466,8 @@ void BoundaryConditions::fill_boundary_cells_dir(
                 MayDay::Error(
                     "BoundaryCondition::Supplied boundary not supported.");
             } // end switch
-        }     // end iterate over box
-    }         // end iterate over boxes
+        } // end iterate over box
+    } // end iterate over boxes
 }
 
 void BoundaryConditions::fill_reflective_cell(
