@@ -382,9 +382,9 @@ void BoundaryConditions::fill_constraint_box(const Side::LoHiSide a_side,
                     MayDay::Error(
                         "BoundaryCondition::Supplied boundary not supported.");
                 } // end switch
-            } // end iterate over box
-        } // end isperiodic
-    } // end idir
+            }     // end iterate over box
+        }         // end isperiodic
+    }             // end idir
 }
 
 /// Fill the boundary values appropriately based on the params set
@@ -466,8 +466,8 @@ void BoundaryConditions::fill_boundary_cells_dir(
                 MayDay::Error(
                     "BoundaryCondition::Supplied boundary not supported.");
             } // end switch
-        } // end iterate over box
-    } // end iterate over boxes
+        }     // end iterate over box
+    }         // end iterate over boxes
 }
 
 void BoundaryConditions::fill_reflective_cell(
