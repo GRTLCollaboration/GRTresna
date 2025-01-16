@@ -165,7 +165,6 @@ void Diagnostics<method_t, matter_t>::normalise_constraints(
             Real Mom2 = diagnostic_vars_box(iv, c_Mom2);
             Real Mom3 = diagnostic_vars_box(iv, c_Mom3);
             Real Mom = diagnostic_vars_box(iv, c_Mom);
-            // Real Mom = sqrt(Mom1 * Mom1 + Mom2 * Mom2 + Mom3 * Mom3);
 
             Real Mom1_abs = diagnostic_vars_box(iv, c_Mom1_abs);
             Real Mom2_abs = diagnostic_vars_box(iv, c_Mom2_abs);
@@ -177,6 +176,7 @@ void Diagnostics<method_t, matter_t>::normalise_constraints(
             diagnostic_vars_box(iv, c_Ham_norm) = abs(Ham / Ham_abs);
             diagnostic_vars_box(iv, c_Mom_norm) = abs(Mom / Mom_abs);
 
+            // This sets the error norms at the boundary cells to zero
             IntVect lo = IntVect::Zero;
             IntVect hi = nCells - IntVect::Unit;
             if (iv[0] == lo[0] || iv[1] == lo[1] || iv[2] == lo[2] ||
@@ -184,11 +184,6 @@ void Diagnostics<method_t, matter_t>::normalise_constraints(
             {
                 diagnostic_vars_box(iv, c_Ham_norm) = 0;
                 diagnostic_vars_box(iv, c_Mom_norm) = 0;
-            }
-
-            if (diagnostic_vars_box(iv, c_Ham_norm) < -0.5)
-            {
-                pout() << iv << endl;
             }
         }
     }
