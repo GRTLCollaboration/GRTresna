@@ -91,7 +91,7 @@ $$H \equiv R + K^2-K_{ij}K^{ij}-16\pi \rho = 0,$$
 
 $$M_i \equiv D^j (K_{ij}- \gamma_{ij} K) - 8\pi S_i = 0.$$
 
-Here, $\gamma_{ij}$ is the 3-metric of the hypersurface, $R$ is the Ricci scalar associated to this metric, and $K_{ij}\sim \partial_t \gamma_{ij}$ is the extrinsic curvature tensor, with $K=\gamma^{ij}K_{ij}$ its trace. The decomposed components of the stress-energy tensor of matter (measured by normal observers) are defined as $\rho = n_\mu\,n_\nu\,T^{\mu\nu}$ and $S_i = -\gamma_{i\mu}\,n_\nu\,T^{\mu\nu}$, where $n_\mu = (-\alpha,0,0,0)$. These equations constitute the set of four PDEs to be solved. There are 16 unknowns: 6 in $\gamma_{ij}$, 6 in $K_{ij}$, 1 in $\rho$ and 3 in $S_i$. Usually the matter configuration is set by the physical scenario, which determines $\rho$ and $S_i$. The constraints only determine 4 quantities, and the remaining 8 (4 of which are physical degrees of freedom, and 4 gauge choices) must be chosen according to physical principles or knowledge about the system. In this short paper, we introduce GRTresna, an open-source code to solve these equations.
+Here, $\gamma_{ij}$ is the 3-metric of the hypersurface, $R$ is the Ricci scalar associated to this metric, and $K_{ij}\sim \partial_t \gamma_{ij}$ is the extrinsic curvature tensor, with $K=\gamma^{ij}K_{ij}$ its trace. The decomposed components of the stress-energy tensor of matter (measured by normal observers) are defined as $\rho = n_\mu n_\nu T^{\mu\nu}$ and $S_i = -\gamma_{i\mu} n_\nu T^{\mu\nu}$, where $n_\mu = (-\alpha,0,0,0)$. These equations constitute the set of four PDEs to be solved. There are 16 unknowns: 6 in $\gamma_{ij}$, 6 in $K_{ij}$, 1 in $\rho$ and 3 in $S_i$. Usually the matter configuration is set by the physical scenario, which determines $\rho$ and $S_i$. The constraints only determine 4 quantities, and the remaining 8 (4 of which are physical degrees of freedom, and 4 gauge choices) must be chosen according to physical principles or knowledge about the system. In this short paper, we introduce GRTresna, an open-source code to solve these equations.
 
 
 The two main methods for finding initial conditions in numerical relativity are the *conformal traverse-traceless* (CTT) and the *conformal thin sandwich* (CTS) approaches.  We refer the reader to the standard NR texts [@Alcubierre:2008co;@Gourgoulhon:2007ue;@Baumgarte:2010ndz;@Baumgarte:2021skc;@Shibata_book] for more details about these. GRTresna implements two variations of the CTT method recently introduced in Aurrekoetxea, Clough \& Lim [@Aurrekoetxea:2022mpw]: the CTTK and CTTK-Hybrid methods, which are particularly well-suited to cases with fundamental fields in the matter content. Documentation about using and modifying GRTresna can be found in the code wiki https://github.com/GRTLCollaboration/GRTresna/wiki.
@@ -133,6 +133,8 @@ There are a number of existing initial data solvers for numerical relativity, mo
 
 In particular, to the best of our knowledge, there is no fully general, publicly available initial condition solver for inhomogeneous cosmological spacetimes. One exception is FLRWSolver, developed by Macpherson \emph{et al.} [@Macpherson:2016ict] as part of the Einstein Toolkit [@Loffler:2011ay], which specializes in initializing data for cosmological perturbations arising from inflation for studies of late-time cosmology. However, this is limited to only weakly non-linear initial data. GRTresna aims to provide an open-source tool that not only incorporates the general features of existing initial data solvers for compact objects in GR but also extends their capabilities to cosmological spacetimes (see [@Aurrekoetxea:2024mdy] for a review of the application of numerical relativity in cosmology). GRTresna is particularly well-suited for fundamental field matter types, such as scalar and vector fields. Its flexible design allows users to implement new solver methods, additional matter types, or extend the code to study theories beyond GR. It is fully compatible with the GRTL Collaboration's ecosystem of codes but can also serve as a complementary tool for generating constraint-satisfying initial data for other numerical relativity codes.
 
+![plot_grtresna](plot_grtresna.pdf){ width=100% }
+*Some highlights of work using GRTresna to date: (Left:) Dark matter around binary black holes, from [@Bamber:2022pbs;@Aurrekoetxea:2023jwk;@Aurrekoetxea:2024cqd] (Middle:) Evolution of inflationary perturbations during preheating, from [@Aurrekoetxea:2023jwd]. (Right:) Scalar fields around black holes in $4\partial ST$ gravity, from [@Brady:2023dgu]*
 
 # Key research projects using GRChombo
 
@@ -144,10 +146,6 @@ The code has already been used successfully to study a range of problems in fund
 - The general relativistic evolution of polarized Proca stars [@Wang:2023tly].
 - Solving the initial conditions problem for modified gravity theories [@Brady:2023dgu].
 
-[plot_grtresna.pdf](https://github.com/user-attachments/files/18509232/plot_grtresna.pdf)
-![Inhomoegenous inflaton field in Early Universe Cosmology](figures/cosmo1.png){ width=45% }
-
-*Images of Imhomogeneous inflaton field in [@Aurrekoetxea:2019fhr] and evolution of the equation of state and density in [@Joana:2020rxm].*
 
 # Acknowledgements
 
