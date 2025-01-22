@@ -81,7 +81,7 @@ bibliography: paper.bib
 
 Numerical relativity (NR) is a tool for the solution of the Einstein Equations, which describe gravity in strong field regimes. The equations can be expressed as a set of coupled partial differential equations (PDEs) for the 10 metric quantities $g_{\mu\nu}$ and their time derivatives $\partial_t g_{\mu\nu}$. NR is primarily focussed on the hyperbolic PDEs that describe their time evolution from an initial data set, but the initial data itself must satisfy a set of four coupled non-linear elliptic PDEs known as the Hamiltonian and momentum constraints. Whilst these constraints can be solved more straightforwardly by making certain assumptions, this significantly restricts the range of physical scenarios that can be studied. A general solver therefore expands the physics that NR evolutions can be used to probe. 
 
-In the ADM form of the Einstein Equations @Arnowitt:1962hi, we slice the spacetime into 3-dimensional hypersurfaces
+In the ADM form of the Einstein Equations [@Arnowitt:1962hi], we slice the spacetime into 3-dimensional hypersurfaces
 
 $$ds^2 = -(\alpha^2 - \beta_i\beta^i) dt^2 + 2\beta_i dx^i dt + \gamma_{ij} dx^i dx^j$$
 
