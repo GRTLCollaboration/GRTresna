@@ -97,7 +97,7 @@ Here, $\gamma_{ij}$ is the 3-metric of the hypersurface, $R$ is the Ricci scalar
 The two main methods for finding initial conditions in numerical relativity are the *conformal traverse-traceless* (CTT) and the *conformal thin sandwich* (CTS) approaches.  We refer the reader to the standard NR texts [@Alcubierre:2008co;@Gourgoulhon:2007ue;@Baumgarte:2010ndz;@Baumgarte:2021skc;@Shibata_book] for more details about these. GRTresna implements two variations of the CTT method recently introduced in Aurrekoetxea, Clough \& Lim [@Aurrekoetxea:2022mpw]: the CTTK and CTTK-Hybrid methods, which are particularly well-suited to cases with fundamental fields in the matter content. Documentation about using and modifying GRTresna can be found in the code wiki https://github.com/GRTLCollaboration/GRTresna/wiki.
 
 ![plot_grtresna](plot.png)
-*Some highlights of work using GRTresna to date: (Left:) Dark matter around binary black holes, from [@Bamber:2022pbs;@Aurrekoetxea:2023jwk;@Aurrekoetxea:2024cqd] (Middle:) Evolution of inflationary perturbations during preheating, from [@Aurrekoetxea:2023jwd]. (Right:) Scalar fields around black holes in $4\partial ST$ gravity, from [@Brady:2023dgu]*
+*Some highlights of work using GRTresna to date: (Left:) Dark matter around binary black holes, from [@Bamber:2022pbs;@Aurrekoetxea:2023jwk;@Aurrekoetxea:2024cqd] (Middle:) Evolution of inflationary perturbations during preheating, from [@Aurrekoetxea:2023jwd]. (Right:) Scalar fields around black holes in* $4\partial ST$ *gravity, from [@Brady:2023dgu]*
 
 # Key features
 
