@@ -1,5 +1,5 @@
 ---
-title: 'GRChombo: An adaptable numerical relativity code for fundamental physics'
+title: 'GRTresna: An open-source code to solve the initial data constraints in numerical relativity'
 tags:
   - c++
   - MPI
@@ -9,279 +9,155 @@ tags:
   - general relativity
   - numerical relativity
 authors:
-- name: Tomas Andrade
-  orcid: 0000-0002-2472-114X
-  affiliation: 1
-- name: Llibert Areste Salo
-  orcid: 0000-0002-3812-8523
-  affiliation: 2
 - name: Josu C. Aurrekoetxea
   orcid: 0000-0001-9584-5791
+  affiliation: 1
+- name: Sam E. Brady
+  orcid: XXXX
+  affiliation: 2
+- name: Llibert Areste Salo
+  orcid: 0000-0002-3812-8523
   affiliation: 3
 - name: Jamie Bamber
   orcid: 0000-0001-7181-3365
   affiliation: 4
+  - name: Liina Chung-Jukko
+  orcid: 0000-0002-2559-7734
+  affiliation: 5
 - name: Katy Clough
   orcid: 0000-0001-8841-1522
-  affiliation: 4
-- name: Robin Croft
-  orcid: 0000-0002-1236-6566
-  affiliation: 5
+  affiliation: 2
 - name: Eloy de Jong
   orcid: 0000-0002-4505-0808
-  affiliation: 3
-- name: Amelia Drew
-  orcid: 0000-0001-8252-602X
   affiliation: 5
-- name: Alejandro Duran
-  #orcid: tbc
+- name: Matthew Elley
+  orcid: 0000-0003-3167-5601
   affiliation: 6
-- name: Pedro G. Ferreira
-  orcid: 0000-0002-3021-2851
-  affiliation: 4
 - name: Pau Figueras
   orcid: 0000-0001-6438-315X
   affiliation: 2
-- name: Hal Finkel
-  orcid: 0000-0002-7551-7122
-  affiliation: 7
-- name: Tiago Fran\c{c}a
-  orcid: 0000-0002-1718-151X
-  affiliation: 2
-- name: Bo-Xuan Ge
-  orcid: 0000-0003-0738-3473
-  affiliation: 3    
-- name: Chenxia Gu
-  orcid: 0000-0001-9537-6139
-  affiliation: 2
 - name: Thomas Helfer
   orcid: 0000-0001-6880-1005
-  affiliation: 8
-- name: Juha Jäykkä
-  orcid: 0000-0002-5929-3931
-  affiliation: 5
-- name: Cristian Joana
-  orcid: 0000-0003-4642-3028
-  affiliation: 9
-- name: Markus Kunesch
-  orcid: 0000-0003-3818-7897
-  affiliation: 5
-- name: Kacper Kornet
-  orcid: 0000-0001-8376-8231
-  affiliation: 5
+  affiliation: 7
 - name: Eugene A. Lim
   orcid: 0000-0002-6227-9540
-  affiliation: 3
-- name: Francesco Muia
-  orcid: 0000-0002-4872-6172
   affiliation: 5
-- name: Zainab Nazari
-  orcid: 0000-0002-2955-7262
-  affiliation: 10, 11
 - name: Miren Radia
   orcid: 0000-0001-8861-2025
-  affiliation: 5
-- name: Justin Ripley
-  orcid: 0000-0001-7192-0021
-  affiliation: 5
-- name: Paul Shellard
-  #orcid: tbc
-  affiliation: 5
-- name: Ulrich Sperhake
-  orcid: 0000-0002-3134-7088
-  affiliation: 5, 12
-- name: Dina Traykova
-  orcid: 0000-0002-3451-0987
-  affiliation: 4
-- name: Saran Tunyasuvunakool
-  orcid: 0000-0002-1620-6797
-  affiliation: 5
+  affiliation: 8
+- name: Areef Waeming
+  orcid: 0009-0001-6700-4116
+  affiliation: 2
 - name: Zipeng Wang
   orcid: 0000-0002-4745-8209
-  affiliation: 8
-- name: James Y. Widdicombe
-  orcid: 0000-0003-2269-4544
-  affiliation: 3
-- name: Kaze Wong
-  orcid: 0000-0001-8432-7788
-  affiliation: 8
+  affiliation: 9
 affiliations:
-- name: Departament de Fısica Quantica i Astrofisica, Institut de Ciencies del Cosmos, Universitat de Barcelona, Marti i Franques 1, 08028 Barcelona, Spain
+- name: Center for Theoretical Physics, Massachusetts Institute of Technology, 77 Massachusetts Ave, Cambridge, MA 02139, USA
   index: 1
-- name: School of Mathematical Sciences, Queen Mary University of London, Mile End Road, London E1 4NS, United Kingdom
+- name: Geometry, Analysis and Gravitation, School of Mathematical Sciences, Queen Mary University of London,
+Mile End Road, London E1 4NS, United Kingdom
   index: 2
-- name: Theoretical Particle Physics and Cosmology, King's College London, Strand, London, WC2R 2LS, United Kingdom
+- name: Institute for Theoretical Physics, KU Leuven, Celestijnenlaan 200D, B-3001 Leuven, Belgium
   index: 3  
-- name: Astrophysics, Oxford University, Denys Wilkinson Building, Keble Road, Oxford OX1 3RH, United Kingdom
+- name: Department of Physics, University of Illinois Urbana-Champaign, Urbana, IL 61801, USA
   index: 4
-- name: Department of Applied Mathematics and Theoretical Physics (DAMTP), University of Cambridge, Centre for Mathematical Sciences, Wilberforce Road, Cambridge CB3 0WA, United Kingdom
+- name: Theoretical Particle Physics and Cosmology, King's College London, Strand, London, WC2R 2LS, United Kingdom
   index: 5
-- name: Intel Iberia, Torre Picasso Plaza Pablo Ruiz Picasso 1 Madrid, 28020 Spain
+- name: Department of Physics, University of Basque Country, UPV/EHU, 48080, Bilbao, Spain
   index: 6
-- name: Argonne National Laboratory (ANL), 9700 S. Cass Avenue, Argonne, IL 60439-4815, United States
+- name: Institute for Advanced Computational Science, Stony Brook University, NY 11794 USA
   index: 7
-- name: Henry A. Rowland Department of Physics & Astronomy, Johns Hopkins University, 3701 San Martin Drive, Baltimore, Maryland (MD) 21218, United States
+- name: Information Services, University of Cambridge, Roger Needham Building, 7 JJ Thomson Avenue, Cambridge, CB3 0WA, United Kingdom
   index: 8
 - name: Cosmology, Universe and Relativity at Louvain (CURL), Institut de Recherche en Mathematique et Physique, University of Louvain, 2 Chemin du Cyclotron, 1348 Louvain-la-Neuve, Belgium
   index: 9
-- name: Department of Physics, Bogazici University, 34342 Bebek, 80820 Istanbul, Turkey
+- name: Department of Physics and Astronomy, Johns Hopkins University, Baltimore, MD 21218, USA
   index: 10
-- name: HECAP Section, Abdus Salam International Centre for Theoretical Physics (ICTP), 34151, Trieste, Italy
-  index: 11
-- name: California Institute of Technology, Pasadena, California 91125, USA
-  index: 12
-date: 1 June 2021
+date: 21 Jan 2025
 bibliography: paper.bib
 
 ---
 
 # Summary
 
-The 2015 detection of gravitational waves (GWs) from a binary black hole merger [@Abbott:2016blz] was a breakthrough moment for science. More detections have since been made by the Advanced LIGO/Virgo network [@Abbott:2020niy;@TheVirgo:2014hva;@TheLIGOScientific:2014jea;@Aasi:2013wya] and future ground and space based detectors [@Somiya:2011np;@Saleem:2021iwi;@Audley:2017drz;@Luo:2015ght;@Hu:2017mde] will further expand our reach. 
+Numerical relativity (NR) is a tool for the solution of the Einstein Equations, which describe gravity in strong field regimes. The equations can be expressed as a set of coupled partial differential equations (PDEs) for the 10 metric quantities $g_{\mu\nu}$ and their time derivatives $\partial_t g_{\mu\nu}$. NR is primarily focussed on the hyperbolic PDEs that describe their time evolution from an initial data set, but the initial data itself must satisfy a set of four coupled non-linear elliptic PDEs known as the Hamiltonian and momentum constraints. Whilst these constraints can be solved more straightforwardly by making certain assumptions, this significantly restricts the range of physical scenarios that can be studied. A general solver therefore expands the physics that NR evolutions can be used to probe. 
 
-Strong gravity regimes are described by the *Einstein Field Equation* (EFE) of General Relativity [@Einstein:1916vd]
+In the ADM form of the Einstein Equations \cite{Arnowitt:1962hi}, we slice the spacetime into 3-dimensional hypersurfaces
 \begin{equation}
-   R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu} = 8 \pi G T_{\mu\nu} ~,
+    ds^2 = -(\alpha^2 - \beta_i\beta^i) dt^2 + 2\beta_i dx^i dt + \gamma_{ij} dx^i dx^j
 \end{equation}
-where $g_{\mu\nu}$ is the gravitational metric describing spacetime distances, $R$ and $R_{\mu\nu}$ are related to its second derivatives in space and time, and $T_{\mu\nu}$ is the stress-energy tensor of any matter or fields present.
-Analytic solutions to the EFE only exist where there is a high degree of symmetry; in general the equations must be solved numerically. The need for observational predictions has thus led to the development of *numerical relativity* (NR), methods for numerically solving the above expression, typically utilising high-performance computing (HPC) resources.
-Expanding out the tensorial notation above, the EFE is a set of coupled, nonlinear second-order partial differential equations for $g_{\mu\nu}$, which describes the curvature of spacetime in the presence of stress-energy $T_{\mu\nu}$, that is, schematically the equation we are trying to solve has the form:
-\begin{equation}
-   \partial_t \partial_t g_{\mu\nu} \sim \partial_x \partial_x g_{\mu\nu} + \partial_y \partial_y g_{\mu\nu} + \partial_z \partial_z g_{\mu\nu} + {\rm nonlinear ~ cross ~ terms} 
-          + 8 \pi G T_{\mu\nu} ~,
-\end{equation}
-where the indices $\mu, \nu$ run over the spacetime indices -- in 4 dimensions, $t, x, y, z$. Given that $g_{\mu\nu}$ is symmetric in its indices, this gives a set of ten coupled nonlinear partial differential equations, sourced by the stress-energy of any matter or fields present in the spacetime.
+and the elliptic constraints are expressed as
+\begin{align}
+\mathcal{H} &\equiv R + K^2-K_{ij}K^{ij}-16\pi \rho = 0\,, \label{eq:Ham} \\
+\mathcal{M}_i &\equiv D^j (K_{ij}- \gamma_{ij} K) - 8\pi S_i = 0\,. \label{eq:Mom}
+\end{align}
+Here, $\gamma_{ij}$ is the 3-metric of the hypersurface, $R$ is the Ricci scalar associated to this metric, and $K_{ij}\sim \partial_t \gamma_{ij}$ is the extrinsic curvature tensor, with $K=\gamma^{ij}K_{ij}$ its trace. The decomposed components of the stress-energy tensor of matter (measured by normal observers) are defined as $\rho = n_\mu\,n_\nu\,T^{\mu\nu}$ and $S_i = -\gamma_{i\mu}\,n_\nu\,T^{\mu\nu}$, where $n_\mu = (-\alpha,0,0,0)$. These equations constitute the set of four PDEs to be solved. There are 16 unknowns: 6 in $\gamma_{ij}$, 6 in $K_{ij}$, 1 in $\rho$ and 3 in $S_i$. Usually the matter configuration is set by the physical scenario, which determines $\rho$ and $S_i$. The constraints only determine 4 quantities, and the remaining 8 (4 of which are physical degrees of freedom, and 4 gauge choices) must be chosen according to physical principles or knowledge about the system. In this short paper, we introduce \texttt{GRTresna}, an open-source code to solve these equations.
 
-One common approach to NR is to specify an initial spatial distribution for the metric and matter fields (subject to certain constraints), and then solve a time evolution for all metric and matter quantities, thus populating their values thoughout the four-dimensional spacetime. The canonical example of this is the simulation of two black holes in orbit around each other, which permits extraction of the gravitational wave signal produced during the merger. Such numerical results have been instrumental in discovering signals in the noisy LIGO/VIRGO detector data, as well as confirming the predictions of GR to a high precision in the strong field regime [@Abbott:2016blz;@Abbott:2020niy].
 
-GRChombo is an open-source code for performing such NR time evolutions, built on top of the publicly available Chombo software [@Adams:2015kgr] for the solution of PDEs. Whilst GRChombo uses standard techniques in NR, it focusses on applications in theoretical physics where adaptability, both in terms of grid structure, and in terms of code modification, are key drivers. 
+The two main methods for finding initial conditions in numerical relativity are the \emph{conformal traverse-traceless} (CTT) and the \emph{conformal thin sandwich} (CTS) approaches.  We refer the reader to the standard NR texts \cite{Alcubierre:2008co,Gourgoulhon:2007ue,Baumgarte:2010ndz,Baumgarte:2021skc,Shibata_book} for more details about these. \texttt{GRTresna} implements two variations of the CTT method recently introduced in Aurrekoetxea, Clough \& Lim \cite{Aurrekoetxea:2022mpw}: the CTTK and CTTK-Hybrid methods, which are particularly well-suited to cases with fundamental fields in the matter content. Documentation about using and modifying \texttt{GRTresna} can be found in the code wiki \url{https://github.com/GRTLCollaboration/GRTresna/wiki}.
 
-# Key features of GRChombo
+# Key features
 
-Since its initial announcement in 2015 [@Clough:2015sqa], the GRChombo code has become a fully mature, open-source NR resource.
+The key features of \texttt{GRTresna} are as follows
 
-The key features of GRChombo are as follows:
+- Flexibility: \texttt{GRTresna} is designed to be extended to various physical scenarios, including different matter types and gravitational theories beyond GR. It currently supports cosmological-type periodic spacetimes and a superposition of two boosted and/or spinning black holes (Bowen-York initial data), with fully general scalar field matter source configurations and the flexibility to adapt to other setups. While scalar fields are the only matter sources included in the current version of the code, the templated methods allow users to easily replace them with other matter types by copying the scalar field implementation and modifying the methods to compute the corresponding energy and momentum densities.
+    
+- Methods: \texttt{GRTresna} incorporates the CTTK and CTTK-Hybrid methods to solve the Hamiltonian and momentum constraints. These methods offer several advantages when dealing with fundamental fields, as discussed in \cite{Aurrekoetxea:2022mpw}. The method code is also templated, so users can easily implement their preferred methods.
 
-- BSSN/CCZ4 formalism with moving punctures: GRChombo evolves the Einstein equation in the BSSN [@Nakamura:1987zz;@Shibata:1995we;@Baumgarte:1998te] or CCZ4 [@Gundlach:2005eh;@Alic:2011gg] formalism with conformal factor $\chi = \det(\gamma_{ij})^{-1/3}$, where $\gamma_{ij}$ is the induced metric on the spatial hyperslices. Singularities of black holes are managed using the moving puncture gauge conditions [@Campanelli:2005dd;@Baker:2005vv], and Kreiss-Oliger dissipation [@kreiss1973methods] is used to control high-frequency noise, both from truncation and the interpolation associated with regridding.
+- Initial conditions: The code supports analytical initial data for the matter fields, as well as the option to read grids and data from an existing HDF5 file. This functionality is especially useful when combined with our code that evolves matter on fixed metric backgrounds \texttt{GRDzhadzha} \cite{Aurrekoetxea:2023fhl}, meaning that we can upgrade the resulting matter configurations to full NR simulations with backreaction.
+    
+- Boundary conditions: The code implements extrapolating, reflective, and periodic boundary conditions, compatible with those in the NR evolution code \texttt{GRChombo} \cite{Andrade:2021rbd,Clough:2015sqa}.
 
-- Boundary Conditions: The code implements periodic, Sommerfeld (radiative), extrapolating and reflective boundary conditions.
+- Diagnostics: The code computes the Hamiltonian and momentum constraint errors at each iteration step, and outputs the norm of these values across the grid to a text file.
 
-- Initial Conditions: The current examples provide analytic or semi-analytic initial data for black hole binaries, Kerr black holes and scalar matter. The code also incorporates a standalone version of the TwoPunctures code [@Ansorg:2004ds] for accurate binary BH data of arbitrary spins (up to the usual limit for Bowen-York data of around $a/M = 0.9$ for the dimensionless spin parameter), masses and momenta.
+- Compatibility: As \texttt{GRTresna} is developed on top of \texttt{Chombo}, the solver is primarily designed to be compatible with \texttt{GRChombo} \cite{Andrade:2021rbd,Clough:2015sqa} and the family of codes developed by the GRTL Collaboration. We provide two examples that integrate directly with existing examples in the GRChombo evolution code (via the output of a checkpoint file for restart at $t=0$), and provide guidance and tools to validate the results. However, the code outputs data in the standard HDF5 data format, which should be straightforward to adapt to other NR codes that support HDF5 input or can be accessed using Python.
+\end{itemize}
 
-- Diagnostics: GRChombo has routines for finding black hole horizons, calculating spacetime masses, angular momenta, densities, fluxes and extracting gravitational waves. 
+Other features that are inherited from \texttt{Chombo} include
 
-- C++ class structure: GRChombo is written in the C++ language, and makes heavy use of object oriented programming (OOP) and templating.
+- C++ class structure: \texttt{GRTresna} is written in the C++ language, and makes heavy use of object-oriented programming (OOP) and templating.
+    
+- Parallelism: \texttt{GRTresna} uses hybrid OpenMP/MPI parallelism.
+    
+- Adaptive Mesh Refinement: The code inherits the flexible AMR grid structure of Chombo, with block-structured Berger-Rigoutsos grid generation \cite{Berger:1991}. The tagging of refinement regions is fully flexible and while it is based on the sources of the elliptic equations by default, other user-defined measures can be defined \cite{Radia:2021hjs}.
 
-- Parallelism: GRChombo uses hybrid OpenMP/MPI  parallelism with explicit vectorisation of the evolution equations via intrinsics, and is AVX-512 compliant. Our code demonstrates efficient strong scaling up to several thousand CPU-cores for a typical BH binary problem, and further for larger problem sizes. 
+    \item Fast: The code uses a multigrid method to efficiently reduce errors across a hierarchy of discretizations, enabling the solver to achieve rapid convergence while minimizing computational costs. This makes \texttt{GRTresna} highly optimized for handling the demanding computations of initial data in the presence of AMR.
+\end{itemize}
 
-- Adaptive Mesh Refinement: The underlying Chombo code provides Berger-Oliger style [@Berger:1984zza] AMR with block-structured  Berger-Rigoutsos grid generation [@BergerRigoutsos]. The tagging of refinement regions is fully flexible and can be based on truncation error or other user-defined measures.
+Forthcoming features currently under development include the addition of other methods, in particular the Extended Conformal Thin Sandwich (XCTS) method, non-conformally flat metric data, new matter types including vector fields, the modified scalar-tensor gravity formalism of Brady et. al. \cite{Brady:2023dgu} and dimensional reduction to 2D using the cartoon formalism \cite{Alcubierre:1999ab, Cook:2016soy}.
 
-The code continues to be actively developed with a number of ongoing projects to add new features.
 
 # Statement of Need
 
-Several 3+1D NR codes using the moving puncture formulation already exist and are under active development. The Einstein Toolkit (http://einsteintoolkit.org/), with its related Cactus (http://cactuscode.org) [@Loffler:2011ay;@Schnetter:2003rb], and Kranc (http://kranccode.org) [@Husa:2004ip] infrastructure used by LEAN [@Sperhake:2006cy;@Zilhao:2010sr] and Canuda (https://bitbucket.org/canuda) [@Witek:2018dmd]. Other notable but non-public codes include BAM [@Marronetti:2007ya;@Brugmann:2008zz], AMSS-NCKU [@Galaviz:2010mx], PAMR/AMRD and HAD [@Neilsen:2007ua;@East:2011aa]. Codes such as SPeC [@Pfeiffer:2002wt] and bamps [@Hilditch:2015aba] implement the generalised harmonic formulation of the Einstein equations using a pseudospectral method, and discontinuous Galerkin methods are used in SpECTRE (https://spectre-code.org) [@deppe_nils_2021_4734670;@Kidder:2016hev] (see also [@Cao:2018vhw]). NRPy (http://astro.phys.wvu.edu/bhathome) [@Ruchlin:2017com] is a code aimed for use on non-HPC systems, which generate C code from Python, and uses adapted coordinate systems to minimise computational costs. CosmoGRaPH (https://cwru-pat.github.io/cosmograph) [@Mertens:2015ttp] and GRAMSES [@Barrera-Hinojosa:2019mzo] are among several NR codes targeted at cosmological applications (see [@Adamek:2020jmr] for a comparison) and which also employ particle methods. Simflowny (https://bitbucket.org/iac3/simflowny/wiki/Home) [@Palenzuela:2018sly], like CosmoGRaPH, is based on the SAMRAI infrastructure, and has targeted fluid and MHD applications. GRAthena++ [@Daszuta:2021ecf] makes use of oct-tree AMR to maximise scaling.
 
-While GRChombo is not the only open-source NR code, its unique features (detailed above) have made it one of the premier codes for numerical relativity, especially in the study of fundamental physics beyond standard binary mergers. In particular, GRChombo's highly flexible adaptive mesh refinement scheme allows for complicated "many-boxes-in-many-boxes" topology , enabling users to simulate non-trivial systems, such as ring-like configurations [@Figueras:2015hkb,@Helfer:2018qgv] and inhomogeneous cosmological spacetimes [@Joana:2020rxm;@Aurrekoetxea:2019fhr;@Clough:2017efm;@Clough:2016ymm]. Nevertheless, with its efficient scalability and AMR capabilities, it can also play a leading role in the continuing efforts to simulate "standard" binary mergers to the required sensitivities required for the upcoming LISA space mission [@Radia:2021hjs]. Finally, GRChombo's object-oriented and template-based code can be rapidly modified for non-standard problems such as higher-dimensional spacetimes [@Figueras:2015hkb;@Figueras:2017zwa;@Bantilan:2019bvf;@Andrade:2020dgc], modified gravity systems [@Figueras:2020dzx] and additional fundamental fields [@Nazari:2020fmk;@Muia:2019coe;@Widdicombe:2019woy;@Clough:2018exo;@Dietrich:2018bvi;@Helfer:2018vtq;@Helfer:2016ljl;@Bamber:2020bpu;@Clough:2019jpm;@Alexandre:2018crg].
+There are a number of existing initial data solvers for numerical relativity, most of which are primarily designed to solve for initial conditions in compact object mergers (i.e. neutron stars and black holes). These include \texttt{TwoPunctures} \cite{Ansorg:2004ds}, \texttt{SGRID} \cite{Tichy:2009yr}, \texttt{BAM} \cite{Bruegmann:2006ulg}, \texttt{LORENE} \cite{LORENE,Gourgoulhon:2000nn}, \texttt{Spells} \cite{Pfeiffer:2002wt}, \texttt{COCAL} \cite{Uryu:2011ky,Tsokaros:2012kp,Tsokaros:2015fea}, \texttt{PCOCAL} \cite{Boukas:2023ckb}, \texttt{Elliptica} \cite{Rashti:2021ihv}, \texttt{NRPyElliptic} \cite{Assumpcao:2021fhq}, \texttt{KADATH}/\texttt{FUKA} \cite{FUKA,Grandclement:2009ju,Papenfort:2021hod}, \texttt{SPHINCS\_ID} \cite{SPHINCSID,Diener:2022hui,Rosswog:2023nnl}, and the solver of East \emph{et al.} \cite{East:2012zn}. Many of these codes, particularly those using spectral methods like \texttt{TwoPunctures}, provide a higher accuracy in the solution compared to \texttt{GRTresna}, which is limited to second order accuracy by the multigrid method used. They are therefore better suited to initial data for waveform generation where precision is key. \texttt{GRTresna} is, however, designed to be more flexible and general purpose, tackling both cosmological and black hole spacetimes in a range of scenarios beyond GR and the Standard Model.
+
+
+In particular, to the best of our knowledge, there is no fully general, publicly available initial condition solver for inhomogeneous cosmological spacetimes. One exception is \texttt{FLRWSolver}, developed by Macpherson \emph{et al.} \cite{Macpherson:2016ict} as part of \texttt{the Einstein Toolkit} \cite{Loffler:2011ay}, which specializes in initializing data for cosmological perturbations arising from inflation for studies of late-time cosmology. However, this is limited to only weakly non-linear initial data. \texttt{GRTresna} aims to provide an open-source tool that not only incorporates the general features of existing initial data solvers for compact objects in GR but also extends their capabilities to cosmological spacetimes (see \cite{Aurrekoetxea:2024mdy} for a review of the application of numerical relativity in cosmology). \texttt{GRTresna} is particularly well-suited for fundamental field matter types, such as scalar and vector fields. Its flexible design allows users to implement new solver methods, additional matter types, or extend the code to study theories beyond GR. It is fully compatible with the GRTL Collaboration's ecosystem of codes but can also serve as a complementary tool for generating constraint-satisfying initial data for other numerical relativity codes.
+
 
 # Key research projects using GRChombo
 
-The wide range of fundamental physics problems for which the code has been used so far includes:
-
-- the simulation of inhomogeneous pre-inflationary spacetimes, bubble collisions and preheating in early universe cosmology [@Joana:2020rxm;@Aurrekoetxea:2019fhr;@Clough:2017efm;@Clough:2016ymm].
+The code has already been used successfully to study a range of problems in fundamental physics, including:
+\begin{itemize}
+    \item The robustness of inflation to inhomogeneities in the scalar field \cite{Aurrekoetxea:2019fhr,Elley:2024alx}.
+    \item The formation of oscillons during inflationary preheating \cite{Aurrekoetxea:2023jwd}.
+    \item Formation of spinning primordial black holes \cite{deJong:2023gsx}.
+    \item The effect of scalar dark matter environments around binary black holes \cite{Bamber:2022pbs,Aurrekoetxea:2023jwk,Aurrekoetxea:2024cqd}.
+    \item The general relativistic evolution of polarized Proca stars \cite{Wang:2023tly}.
+    \item Solving the initial conditions problem for modified gravity theories \cite{Brady:2023dgu}.
+\end{itemize}
 
 ![Inhomoegenous inflaton field in Early Universe Cosmology \label{fig:cosmo1}](figures/cosmo1.png){ width=45% }
 ![Evolutions of the equation of state and density \label{fig:cosmo2}](figures/cosmo2.png){ width=45% }
 
 *Images of Imhomogeneous inflaton field in [@Aurrekoetxea:2019fhr] and evolution of the equation of state and density in [@Joana:2020rxm].*
 
-- the study of modified gravity, and violation of cosmic censorship [@Figueras:2020dzx;@Andrade:2020dgc;@Bantilan:2019bvf;@Figueras:2017zwa;@Figueras:2015hkb].
-
-![Testing cosmic censorship in higher-dimensional black rings \label{fig:blackstring1}](figures/mgcc1.png){ width=45% }
-![Mapping regions of validity for modified gravity \label{fig:blackstring2}](figures/mgcc2.png){ width=45% }
-
-*Images of testing cosmic censorship with higher-dimensional black rings in [@Figueras:2017zwa] and mapping regions of validity for modified gravity in [@Figueras:2020dzx].*
-
-- the formation, collapse and collisions of exotic compact objects (ECOs) and dark matter stars [@Nazari:2020fmk;@Muia:2019coe;@Widdicombe:2019woy;@Widdicombe:2018oeo;@Clough:2018exo;@Dietrich:2018bvi;@Helfer:2018vtq;@Helfer:2016ljl].
-
-![Axion star collapse \label{fig:axionstar1}](figures/eco1.png){ width=45% }
-![GW signals from ECO collision \label{fig:axionstar2}](figures/eco2.png){ width=45% }
-
-*Images of axion star collapse from [@Helfer:2016ljl] and GW signals from an ECO collision [@Helfer:2018vtq].*
-
-- gravitational wave emission from cosmic string collapse [@Aurrekoetxea:2020tuw;@Helfer:2018qgv] and scalar radiation from global cosmic(/axion) strings [@Drew:2019mzc].
-
-![Global axion strings \label{fig:cosmicstring1}](figures/string1.png){ width=45% }
-![GW signal from cosmic string loop collapse \label{fig:cosmicstring2}](figures/string2.png){ width=45% }
-
-*Images of global axion strings from [@Drew:2019mzc] and the GW signal from cosmic string loop collapse in [@Aurrekoetxea:2020tuw].*
-
-- the study of light bosonic dark matter and neutrino-like particles in black holes environments [@Bamber:2020bpu;@Clough:2019jpm;@Alexandre:2018crg;@Traykova2021].
-
-![Scalar field around spinning black hole \label{fig:dm1}](figures/enviro1.png){ width=45% }
-![Relativistic scaling of dynamical friction in scalar dark matter \label{fig:dm2}](figures/enviro2.png){ width=45% }
-
-*Images of scalar field accretion around a spinning BH from [@Bamber:2020bpu], and the relativistic scaling of dynamical friction from [@Traykova2021].*
-
-- the study of gravitational recoil in unequal mass binaries [@Radia:2021hjs].
-
-![Black hole trajectories \label{fig:recoil1}](figures/kick1.png){ width=45% }
-![Black hole recoil velocities, spin and radiated energy \label{fig:recoil2}](figures/kick2.png){ width=45% }
-
-*Images of the BH trajectories and recoil velocities, spin and radiated energy in [@Radia:2021hjs].*
-
 # Acknowledgements
 
-The GRChombo collaboration gratefully acknowledges support to its members by the ERC, UKRI/STFC, Intel, The Royal Society, PRACE and DiRAC.
- 
-In particular, P Ferreira, JB, KC and DT acknowledge support from the European Research Council (ERC) under the European Union’s Horizon 2020 research and innovation programme (grant agreement No 693024). P Figueras also acknowledges support from the ERC for the project ERC-2014-StG 639022-NewNGR and a Royal Society University Research Fellowship, Grant No. UF140319, URF/R/201026 and RGF/EA/180260. TF acknowledges support under the Royal Society grant RS/PhD/181177.
-AD has been supported by an EPSRC iCASE Studentship in partnership with Intel (EP/N509620/1, Voucher 16000206) and is currently supported by a Junior Research Fellowship at Homerton College, Cambridge. F.M. is funded by a UKRI/EPSRC Stephen Hawking fellowship, grant reference EP/T017279/1. This work has been partially supported by STFC consolidated grant ST/P000681/1. Z.N. is supported by ICTP-Sandwich Training Educational Programme (STEP). HF was supported by the U.S. Department of Energy (DOE) Office of Science under Contract DE-AC02-06CH11357.
+We thank the GRTL collaboration (\href{www.grtlcollaboration.org}{www.grtlcollaboration.org}) for their support and code development work.
+JCA acknowledges funding from the Department of Physics at MIT. SEB is supported by a QMUL Principal studentship. KC acknowledges funding from the UKRI Ernest Rutherford Fellowship (grant number ST/V003240/1). KC and PF acknowledge funding from STFC Research Grant ST/X000931/1 (Astronomy at Queen Mary 2023-2026). ME has been supported in part by the PID2021-123703NB-C21 grant funded by MCIN/AEI/10.13039/501100011033/and by ERDF; ``A way of making Europe''; the Basque Government grant (IT-1628-22). EAL acknowledges support from a Leverhulme Trust Research Project Grant. AW acknowledges the support of the Development and Promotion of Science and Technology Talents Project (DPST), the Institute for the Promotion of Teaching Science and Technology (IPST), Thailand. Z.W. is supported by NSF Grants No. AST-2307146, PHY-2207502, PHY-090003 and PHY-20043, by NASA Grant No. 21-ATP21-0010, by the John Templeton Foundation Grant 62840, by the Simons Foundation, and by the Italian Ministry of Foreign Affairs and International Cooperation grant No. PGR01167.
 
-We thank the developers of the Chombo code for their assistance and guidance on using their code, and the Intel Parallel Computing Centre at the University of Cambridge for their support of our code development. We acknowledge the support of the Intel Visualization team, led by Jim Jeffers, notably the collaboration on in-situ visualization with Carson Brownlee.
-
-GRChombo users have benefited from the provision of HPC resources from:
-
-  * DiRAC (Distributed Research utilising Advanced Computing) resources under the projects ACSP218, ACSP191, ACTP183 and ACTP186. Systems used include: 
-
-    - Cambridge Service for Data Driven Discovery (CSD3), part of which is operated by the University of Cambridge Research Computing on behalf of the STFC DiRAC HPC Facility (www.dirac.ac.uk). The DiRAC component of CSD3 was funded by BEIS capital funding via STFC capital grants ST/P002307/1 and ST/R002452/1 and STFC operations grant ST/R00689X/1. DiRAC is part of the National e-Infrastructure.
-
-    - DiRAC Data Intensive service at Leicester, operated by the University of Leicester IT Services, which forms part of the STFC DiRAC HPC Facility (www.dirac.ac.uk). The equipment was funded by BEIS capital funding via STFC capital grants ST/K000373/1 and ST/R002363/1 and STFC DiRAC Operations grant ST/R001014/1. DiRAC is part of the National e-Infrastructure.
-
-    -  DiRAC at Durham facility managed by the Institute for Computational Cosmology on behalf of the STFC DiRAC HPC Facility (www.dirac.ac.uk). The equipment was funded by BEIS capital funding via STFC capital grants ST/P002293/1 and ST/R002371/1, Durham University and STFC operations grant ST/R000832/1. DiRAC is part of the National e-Infrastructure.
-
-    - DIRAC Shared Memory Processing system at the University of Cambridge, operated by the COSMOS Project at the Department of Applied Mathematics and Theoretical Physics on behalf of the STFC DiRAC HPC Facility (www.dirac.ac.uk). This equipment was funded by BIS National E-infrastructure capital grant ST/J005673/1, STFC capital grant ST/H008586/1, and STFC DiRAC Operations grant ST/K00333X/1. DiRAC is part of the National e-Infrastructure.
-
-    - DiRAC Complexity system, operated by the University of Leicester IT Services, which forms part of the STFC DiRAC HPC Facility (www.dirac.ac.uk ). This equipment is funded by BIS National E-Infrastructure capital grant ST/K000373/1 and STFC DiRAC Operations grant ST/K0003259/1. DiRAC is part of the National e-Infrastructure.
-
-  * PRACE (Partnership for Advanced Computing in Europe) resources under grant numbers 2018194669, 2020225359. Systems used include:
-
-    - SuperMUCNG, Leibniz Supercomputing Center (LRZ), Germany
-
-    - JUWELS, Juelich Supercomputing Centre (JSC), Germany
-
-    - Cartesius (SURF), Netherlands
-
-    - Marenostrum (BSC), Spain
-    
-  * the Argonne Leadership Computing Facility, including the Joint Laboratory for System Evaluation (JLSE), which is a U.S. Department of Energy (DOE) Office of Science User Facility supported under Contract DE-AC02-06CH11357.
-
-  * the Texas Advanced Computing Center (TACC) at the University of Austin HPC and visualization resources URL: http://www.tacc.utexas.edu, and the San Diego Supercomputing Center (SDSC) URL: https://www.sdsc.edu, under project PHY-20043 and XSEDE Grant No. NSF-PHY-090003
-
-  * Consortium des Équipements de Calcul Intensif (CÉCI), funded by the Fonds de la Recherche Scientifique de Belgique (F.R.S.-FNRS), Belgium
-
-  * the Marconi HPC resources and software support (awarded by CINECA), Italy
-
-  * the Glamdring cluster, Astrophysics, Oxford, UK
-
-  * The Fawcett cluster, Faculty of Mathematics, Cambridge, UK
-
-  * the Argo cluster at ICTP, Trieste, Italy
-
-  * the Apocrita cluster at QMUL, UK
-  
-  * The Athena cluster at HPC Midlands Plus, UK
-
-  * The Cosmo cluster at CURL, University of Louvain, Belgium
-
+Development of this code used the DiRAC Memory Intensive services Cosma8 and Cosma7 at Durham University, managed by the Institute for Computational Cosmology on behalf of the STFC DiRAC HPC Facility (www.dirac.ac.uk). The DiRAC service at Durham was funded by BEIS, UKRI and STFC capital funding, Durham University and STFC operations grants. DiRAC is part of the UKRI Digital Research Infrastructure.
 # References
 
