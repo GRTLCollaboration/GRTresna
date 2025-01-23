@@ -95,10 +95,9 @@ void CTTK<matter_t>::solve_analytic(LevelData<FArrayBox> *a_multigrid_vars,
 
             // Now work out K using ansatz which sets it to (roughly)
             // the FRW value based on the local densities
-            Real K_0_squared =
-                24.0 * M_PI * G_Newton * emtensor.rho +
-                1.5 * A2_0 * pow(psi_0, -12.0) +
-                12.0 * laplacian_psi_reg * pow(psi_0, -5.0);
+            Real K_0_squared = 24.0 * M_PI * G_Newton * emtensor.rho +
+                               1.5 * A2_0 * pow(psi_0, -12.0) +
+                               12.0 * laplacian_psi_reg * pow(psi_0, -5.0);
 
             // Set value for K
             // be careful if at a point K = 0, may have discontinuity
