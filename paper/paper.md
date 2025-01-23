@@ -77,6 +77,8 @@ bibliography: paper.bib
 
 ---
 
+GRTresna is a multigrid solver designed to solve the constraint equations for the initial data required in numerical relativity simulations. In particular it is focussed on scenarios with fundamental fields around black holes and inhomogeneous cosmological spacetimes. The following overview has been prepared as part of the submission of the code to the Journal of Open Source Software. The code is based on the formalism in Aurrekoetxea, Clough \& Lim [@Aurrekoetxea:2022mpw] and can be found at https://github.com/GRTLCollaboration/GRTresna
+
 # Summary
 
 Numerical relativity (NR) is a tool for the solution of the Einstein Equations, which describe gravity in strong field regimes. The equations can be expressed as a set of coupled partial differential equations (PDEs) for the 10 metric quantities $g_{\mu\nu}$ and their time derivatives $\partial_t g_{\mu\nu}$. NR is primarily focussed on the hyperbolic PDEs that describe their time evolution from an initial data set, but the initial data itself must satisfy a set of four coupled non-linear elliptic PDEs known as the Hamiltonian and momentum constraints. Whilst these constraints can be solved more straightforwardly by making certain assumptions, this significantly restricts the range of physical scenarios that can be studied. A general solver therefore expands the physics that NR evolutions can be used to probe. 
@@ -121,7 +123,7 @@ Other features that are inherited from Chombo include
     
 - Parallelism: GRTresna uses hybrid OpenMP/MPI parallelism.
     
-- Adaptive Mesh Refinement: The code inherits the flexible AMR grid structure of Chombo, with block-structured Berger-Rigoutsos grid generation [@Berger:1991]. The tagging of refinement regions is fully flexible and while it is based on the sources of the elliptic equations by default, other user-defined measures can be defined [@Radia:2021hjs].
+- Adaptive Mesh Refinement: The code inherits the flexible AMR grid structure of Chombo, with block-structured Berger-Rigoutsos grid generation [@Berger:1991]. The tagging of refinement regions is fully flexible and while it is based on the sources of the elliptic equations by default, other user-defined measures can be defined [@Radia:2021smk].
 
 - Fast: The code uses a multigrid method to efficiently reduce errors across a hierarchy of discretizations, enabling the solver to achieve rapid convergence while minimizing computational costs. This makes GRTresna highly optimized for handling the demanding computations of initial data in the presence of AMR.
 
