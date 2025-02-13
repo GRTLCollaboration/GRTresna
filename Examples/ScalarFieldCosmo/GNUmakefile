@@ -14,6 +14,9 @@ makefiles += releasedExamples_AMRPoisson_execVariableCoefficient
 cxxcppflags = -DUSE_CTTK
 # cxxcppflags = -DUSE_CTTKHybrid
 
+# Choose directory of matter type
+MatterType = ScalarField
+
 # the base name(s) of the application(s) in this directory
 ebase = Main_ScalarFieldCosmo
 
@@ -27,11 +30,12 @@ INPUT = params.txt
 src_dirs := ../../Source \
             ../../Source/Core \
             ../../Source/Matter \
+            ../../Source/Matter/${MatterType} \
             ../../Source/Methods \
             ../../Source/Tools \
             ../../Source/Variables \
             ../../Source/TaggingCriteria \
-	          ../../Source/Operator \
+	        ../../Source/Operator \
             ../../Source/Operator/SolverOperator 
 
 # shared code for building example programs
