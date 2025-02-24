@@ -13,6 +13,7 @@
 #include "CTTKHybrid.hpp"
 #include "Diagnostics.hpp"
 #include "GRSolver.hpp"
+#include "RHSTagging.hpp"
 #include "ScalarField.hpp"
 #include "SimulationParameters.hpp"
 
