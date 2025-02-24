@@ -10,6 +10,7 @@
 #include "CTTKHybrid.hpp"
 #include "GRParmParse.hpp"
 #include "GRSolver.hpp"
+#include "RHSTagging.hpp"
 #include "ScalarField.hpp"
 
 using namespace std;
@@ -43,10 +44,14 @@ int main(int argc, char *argv[])
     // https://github.com/GRTLCollaboration/GRTresna/wiki/Solver-methods
     // for more details
 #if defined(USE_CTTK)
-    GRSolver<CTTK<ScalarField>, ScalarField> solver(pp);
+    GRSolver<CTTK<ScalarField>, ScalarField,
+             RHSTagging<CTTK<ScalarField>, ScalarField>>
+        solver(pp);
     pout() << "Using CTTK" << endl;
 #elif defined(USE_CTTKHybrid)
-    GRSolver<CTTKHybrid<ScalarField>, ScalarField> solver(pp);
+    GRSolver<CTTKHybrid<ScalarField>, ScalarField,
+             RHSTagging<CTTKHybrid<ScalarField>, ScalarField>>
+        solver(pp);
     pout() << "Using CTTK Hybrid" << endl;
 #else
 #error                                                                         \

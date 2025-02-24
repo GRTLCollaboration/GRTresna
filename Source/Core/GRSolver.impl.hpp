@@ -11,12 +11,11 @@
 #include "GRParmParse.hpp"
 #include "GRSolver.hpp"
 #include "PsiAndAijFunctions.hpp"
-#include "RHSTagging.hpp"
 #include "WriteFile.hpp"
 #include "WriteOutput.H"
 
-template <class method_t, class matter_t>
-GRSolver<method_t, matter_t>::GRSolver(GRParmParse &a_pp)
+template <class method_t, class matter_t, class tagging_t>
+GRSolver<method_t, matter_t, tagging_t>::GRSolver(GRParmParse &a_pp)
     : pp(a_pp), params(pp), numLevels(params.grid_params.numLevels),
       multigrid_vars(numLevels, NULL), constraint_vars(numLevels, NULL),
       rhs(numLevels, NULL), aCoef(numLevels), bCoef(numLevels),
@@ -30,8 +29,8 @@ GRSolver<method_t, matter_t>::GRSolver(GRParmParse &a_pp)
         new method_t(params.method_params, matter, psi_and_Aij_functions,
                      params.grid_params.numLevels, params.grid_params.center,
                      params.base_params.G_Newton);
-    tagging_criterion = new RHSTagging<method_t, matter_t>(
-        method, matter, params.base_params.G_Newton);
+    tagging_criterion =
+        new tagging_t(method, matter, params.base_params.G_Newton);
     grids = new Grids(params.grid_params, tagging_criterion,
                       params.base_params.readin_matter_data);
     diagnostics = new Diagnostics<method_t, matter_t>(
@@ -39,8 +38,8 @@ GRSolver<method_t, matter_t>::GRSolver(GRParmParse &a_pp)
         params.grid_params.center);
 }
 
-template <class method_t, class matter_t>
-void GRSolver<method_t, matter_t>::setup()
+template <class method_t, class matter_t, class tagging_t>
+void GRSolver<method_t, matter_t, tagging_t>::setup()
 {
     // set up the grids, using the rhs for tagging to decide
     // where needs additional levels
@@ -75,8 +74,8 @@ void GRSolver<method_t, matter_t>::setup()
                        grids->grids_data, params, 0);
 }
 
-template <class method_t, class matter_t>
-int GRSolver<method_t, matter_t>::run()
+template <class method_t, class matter_t, class tagging_t>
+int GRSolver<method_t, matter_t, tagging_t>::run()
 {
     // Iterate linearised Poisson eqn for NL solution
 
@@ -152,8 +151,9 @@ int GRSolver<method_t, matter_t>::run()
     return exitStatus;
 }
 
-template <typename method_t, typename matter_t>
-void GRSolver<method_t, matter_t>::calculate_diagnostics(const int NL_iter)
+template <typename method_t, typename matter_t, class tagging_t>
+void GRSolver<method_t, matter_t, tagging_t>::calculate_diagnostics(
+    const int NL_iter)
 {
     if (params.grid_params.periodic_directions_exist)
     {
@@ -202,8 +202,8 @@ void GRSolver<method_t, matter_t>::calculate_diagnostics(const int NL_iter)
     writeFile(params.base_params.error_filename, NL_iter, Ham_error, Mom_error);
 }
 
-template <typename method_t, typename matter_t>
-void GRSolver<method_t, matter_t>::create_vars()
+template <typename method_t, typename matter_t, class tagging_t>
+void GRSolver<method_t, matter_t, tagging_t>::create_vars()
 {
     IntVect ghosts = params.grid_params.num_ghosts * IntVect::Unit;
     IntVect no_ghosts = IntVect::Zero;
@@ -245,8 +245,8 @@ void GRSolver<method_t, matter_t>::create_vars()
     }
 }
 
-template <class method_t, class matter_t>
-GRSolver<method_t, matter_t>::~GRSolver()
+template <class method_t, class matter_t, class tagging_t>
+GRSolver<method_t, matter_t, tagging_t>::~GRSolver()
 {
 
     delete grids;

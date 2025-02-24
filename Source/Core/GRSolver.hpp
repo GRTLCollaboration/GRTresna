@@ -16,7 +16,7 @@
 Class that manages high-level solver functionality, independent of specific
 method
 */
-template <class method_t, class matter_t> class GRSolver
+template <class method_t, class matter_t, class tagging_t> class GRSolver
 {
   public:
     GRSolver(GRParmParse &pp);
