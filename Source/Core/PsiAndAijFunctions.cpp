@@ -77,8 +77,16 @@ Real PsiAndAijFunctions::compute_bowenyork_psi(const RealVect &loc)
         J1_squared += J1[i] * J1[i];
         J2_squared += J2[i] * J2[i];
     }
-    Real a1_squared = J1_squared / m1 / m1;
-    Real a2_squared = J2_squared / m2 / m2;
+    Real a1_squared = 0.0;
+    Real a2_squared = 0.0;
+    if (m1 > 0.0)
+    {
+        a1_squared = J1_squared / m1 / m1;
+    }
+    if (m2 > 0.0)
+    {
+        a2_squared = J2_squared / m2 / m2;
+    }
 
     // set the BH values - location
     RealVect loc_bh1;
