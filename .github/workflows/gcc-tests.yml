@@ -4,12 +4,14 @@ on: [push]
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
+        # see available versions here: https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#preinstalled-software
+        gcc-version: [13]
         mpi: ['TRUE', 'FALSE']
       fail-fast: false
-    name: GCC MPI = ${{ matrix.mpi }}
+    name: GCC ${{ matrix.gcc-version }}, MPI = ${{ matrix.mpi }}
     env:
       CHOMBO_HOME: ${{ github.workspace }}/Chombo/lib
       OMP_NUM_THREADS: 1
@@ -37,13 +39,14 @@ jobs:
     - name: Install Chombo dependencies
       run: |
         sudo apt-get update
-        sudo apt-get -y --no-install-recommends install csh gfortran-10 g++-10 cpp-10 libhdf5-dev libhdf5-openmpi-dev openmpi-bin libblas-dev liblapack-dev libgetopt-complete-perl
+        sudo apt-get -y --no-install-recommends install csh libhdf5-dev libhdf5-openmpi-dev openmpi-bin libblas-dev liblapack-dev libgetopt-complete-perl
 
     - name: Set Compilers
       run: |
-        sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 100
-        sudo update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-10 100
-        sudo update-alternatives --install /usr/bin/cpp cpp /usr/bin/cpp-10 100
+        sudo update-alternatives --remove-all cpp || true
+        sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${{ matrix.gcc-version }} 100
+        sudo update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-${{ matrix.gcc-version }} 100
+        sudo update-alternatives --install /usr/bin/cpp cpp /usr/bin/cpp-${{ matrix.gcc-version }} 100
     
     - name: Build Chombo
       run: |

@@ -4,27 +4,27 @@ on: [push]
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
-        mpi: ['TRUE', 'FALSE']
-      fail-fast: false
-    name: Intel (classic) MPI = ${{ matrix.mpi }}
+        mpi: ['FALSE', 'TRUE']
+
+    name: MPI = ${{ matrix.mpi }}
     env:
       CHOMBO_HOME: ${{ github.workspace }}/Chombo/lib
       OMP_NUM_THREADS: 1
       GRCHOMBO_HOME: ${{ github.workspace }}/GRChombo
       BUILD_ARGS: MPI=${{ matrix.mpi}}
-  
+
     steps:
     - name: Checkout Chombo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         repository: GRChombo/Chombo
         path: Chombo
 
     - name: Checkout GRChombo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         repository: GRChombo/GRChombo
         path: GRChombo
@@ -34,11 +34,22 @@ jobs:
       with:
         path: GRTresna
 
-    - name: Install Chombo dependencies
+    - name: Update package manager database
+      id: update-database
+      continue-on-error: true
+      run: sudo apt-get update
+
+      # This is quite slow so only do this if the previous command fails
+    - name: Update package repository mirrors if necessary
+      if: steps.update-database.outcome == 'failure'
       run: |
+        sudo gem install apt-spy2
+        sudo apt-spy2 fix --commit --launchpad --country=US
         sudo apt-get update
-        sudo apt-get -y --no-install-recommends install csh libgetopt-complete-perl
-        
+
+    - name: Install Chombo dependencies
+      run: sudo apt-get -y --no-install-recommends install csh libgetopt-complete-perl
+
     - name: Install Intel compilers
       run: |
         wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
@@ -47,12 +58,12 @@ jobs:
         sudo apt-get update
         sudo apt-get -y install intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-2023.2.4 intel-oneapi-compiler-fortran-2023.2.4 intel-oneapi-mkl-2023.2.0 intel-oneapi-openmp-2023.2.4
       working-directory: /tmp
-
+ 
     - name: Install Intel MPI
       if: matrix.mpi == 'TRUE'
       run: |
         sudo apt-get -y install intel-oneapi-mpi intel-oneapi-mpi-devel 
-    
+
     - name: Build Chombo
       run: |
         source /opt/intel/oneapi/setvars.sh
