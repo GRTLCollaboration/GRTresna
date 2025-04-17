@@ -8,6 +8,9 @@ endif
 # trace the chain of included makefiles
 makefiles += releasedExamples_AMRPoisson_execVariableCoefficient
 
+# Choose directory of matter type
+MatterType = ScalarField
+
 # the base name(s) of the application(s) in this directory
 ebase = PeriodicScalarTest
 
@@ -21,6 +24,7 @@ INPUT = params.txt
 src_dirs := ../../Source \
             ../../Source/Core \
             ../../Source/Matter \
+            ../../Source/Matter/${MatterType} \
             ../../Source/Methods \
             ../../Source/Tools \
             ../../Source/Variables \
