@@ -10,6 +10,12 @@
 # To read matter input from an hdf5 file uncomment this
 # input_filename = Outputs/SourceData_chk000001.3d.hdf5
 
+# Where to read in data from, and the file format
+read_from_data_dphi = myfile_phi.csv
+read_from_data_dpi = myfile_pi.csv
+data_lines = 256
+data_spacing = 0.1
+
 # Where to put the final hdf5 file
 output_path = Outputs/
 output_filename = InitialDataFinal.3d.hdf5

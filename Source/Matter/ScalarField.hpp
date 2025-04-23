@@ -48,9 +48,11 @@ class ScalarField
 
     Real my_potential_function(const Real &phi_here) const;
 
-    Real my_phi_function(const RealVect &locr) const;
+    Real my_phi_function(const RealVect &locr,
+                         const RealVect &a_dx = IntVect::Zero) const;
 
-    Real my_Pi_function(const RealVect &loc) const;
+    Real my_Pi_function(const RealVect &loc,
+                        const RealVect &a_dx = IntVect::Zero) const;
 
     params_t m_matter_params;
 

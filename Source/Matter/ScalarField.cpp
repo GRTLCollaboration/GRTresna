@@ -39,8 +39,8 @@ void ScalarField::initialise_matter_vars(LevelData<FArrayBox> &a_multigrid_vars,
             RealVect loc;
             Grids::get_loc(loc, iv, a_dx, center);
 
-            multigrid_vars_box(iv, c_phi_0) = my_phi_function(loc);
-            multigrid_vars_box(iv, c_Pi_0) = my_Pi_function(loc);
+            multigrid_vars_box(iv, c_phi_0) = my_phi_function(loc, a_dx);
+            multigrid_vars_box(iv, c_Pi_0) = my_Pi_function(loc, a_dx);
         }
     }
 }
