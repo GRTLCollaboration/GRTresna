@@ -1,0 +1,155 @@
+# See the wiki page for an explanation of the params!
+# https://github.com/GRTLCollaboration/GRTresna/wiki/Guide-to-parameters
+# May also be useful to look at Source/Core/SimulationParameters.hpp
+# Default values are commented out, uncomment to amend them
+
+#################################################
+# Filesystem parameters
+# Mainly read in SimulationParameters.hpp
+
+# To read matter input from an hdf5 file uncomment this
+# input_filename = Outputs/SourceData_chk000001.3d.hdf5
+
+# Where to put the final hdf5 file
+output_path = Outputs/
+output_filename = InitialDataFinal.3d.hdf5
+
+# Path for processor outputs and verbosity
+# pout_path = pout/
+# verbosity = 1
+
+# Frequency of writing diagnostic files at non linear iterations
+# Set write_diagnostics to 0 to turn off
+# write_diagnostics = 1
+# diagnostic_interval = 10
+
+# Output for tracking convergence of the errors
+error_filename = Ham_and_Mom_errors
+
+#################################################
+# Grid parameters
+# Mostly read in Grids.cpp
+
+# 'N' is the number of subdivisions in each direction of a cubic box
+# 'L' is the length of the longest side of the box, dx_coarsest = L/N
+N = 64 64 64
+L = 128
+
+# Maximum number of times you can regrid above coarsest level
+max_level = 0 # There are (max_level+1) grids, so min is zero
+
+# Threshold for AMR refinement, based on magnitude of rhs
+# refine_threshold = 0.5
+# Force regridding within some radius
+regrid_radius = 14
+# Set how aggressively to refine
+# fill_ratio   = 0.75
+# buffer_size  = 0
+
+# Splitting the grid into boxes for MPI parallelisation
+# min box size
+block_factor = 16
+# max box size
+max_grid_size = 16
+
+#################################################
+# Boundary Conditions parameters
+# Read in BoundaryConditions.cpp
+
+#Periodic directions - 0 = false, 1 = true
+is_periodic = 1 1 1
+
+# Set the decomposition for the vector laplacian
+# compact source = 1, non compact = 0
+# Usually compact for asymptotically flat spacetimes
+# and non compact for periodic
+use_compact_Vi_ansatz = 0
+
+# Set method to fill the ghosts in GRChombo outputs
+# and between NL iterations
+# 0 = extrapolating (by default the quantities in ConstraintVariables.hpp are zeroed at boundaries)
+# 1 = reflective, with parity set as in UserVariables files
+hi_boundary = 0 0 0
+lo_boundary = 0 0 0
+
+# Optionally use extrapolation for the Vi variables. Note that in this 
+# case you should probably set the deactivate_zero_mode param to true
+# Vi_extrapolated_at_boundary = 0
+
+# This order is used to fill ghosts for K and Aij, usually linear
+# and for GRChombo vars where fewer ghosts than solver
+# Default is 1, can also change to 0
+# extrapolation_order = 1
+
+#################################################
+# Initial Data parameters
+
+# Q: "Simple, change the gravitational constant of the Universe"
+G_Newton = 1.0 
+
+# Scalar field input params read in MatterParams.hpp
+# and used in MatterFunctions.hpp
+phi_0 = 1e-1
+dphi = 1e-1
+pi_0 = 1e-1
+dpi = 1e-1
+scalar_mass = 1e-1
+
+# Conformal factor psi
+# Related to cosmo scale factor a = psi^2
+# Usually set to 1.0 for asymptotically flat space
+regularised_part_psi = 1.0
+
+# Trace of extrinsic curvature K
+# Positive K=1 for collapsing, negative K=-1 expanding
+sign_of_K = -1
+
+#################################################
+# Bowen York binary BH spacetimes
+# Mostly read in PsiAndAijFunctions.cpp
+# To remove BHs just set all masses/momenta/spins to zero
+
+bh1_bare_mass = 0.0
+# Spin about each axis J_i
+bh1_spin = 0.0 0.0 0.0
+# Boost in each direction P_i
+bh1_momentum = 0.0 0.0 0.0
+# Offset from center of grid
+bh1_offset = 0.0 0.0 0.0
+
+bh2_bare_mass = 0.0
+# Spin about each axis J_i
+bh2_spin = 0.0 0.0 0.0
+# Boost in each direction P_i
+bh2_momentum = 0.0 0.0 0.0
+# Offset from center of grid
+bh2_offset = 0.0 0.0 0.0
+
+#################################################
+# Solver parameters
+# Mainly read in SimulationParameters.hpp
+
+# Max number of non linear iterations
+max_NL_iterations = 100 
+
+# for periodic boundaries, it can help to deactivate the zero mode
+# to avoid the solution drifting in the linear solver steps
+# aka "the Garfinkle trick". Off (default) = 0, on = 1
+deactivate_zero_mode = 1
+
+# From here on you probably don't want to change anything
+# Suggested default options are provided that usually work
+# Change at your own risk!
+
+# Misc settings for linear solver steps
+# iter_tolerance = 1.0e-10
+# max_iter = 100
+# numMGIter = 4
+# numMGSmooth = 4
+# preCondSolverDepth = -1
+# coefficient_average_type = harmonic
+
+# These set the signs of a_coeff and b_coeff
+# You almost certainly don't want to change these
+# alpha = 1.0
+# beta = -1.0
