@@ -68,10 +68,8 @@ affiliations:
   index: 7
 - name: Information Services, University of Cambridge, Roger Needham Building, 7 JJ Thomson Avenue, Cambridge, CB3 0WA, United Kingdom
   index: 8
-- name: Institute for Advanced Computational Science, Stony Brook University, NY 11794 USA
-  index: 9
 - name: Department of Physics and Astronomy, Johns Hopkins University, Baltimore, MD 21218, USA
-  index: 10
+  index: 9
 date: 22 Jan 2025
 bibliography: paper.bib
 
@@ -117,15 +115,7 @@ The key features of GRTresna are as follows
 
 - Compatibility: As GRTresna is developed on top of Chombo, the solver is primarily designed to be compatible with GRChombo [@Andrade:2021rbd;@Clough:2015sqa] and the family of codes developed by the GRTL Collaboration. We provide two examples that integrate directly with existing examples in the GRChombo evolution code (via the output of a checkpoint file for restart at $t=0$), and provide guidance and tools to validate the results. However, the code outputs data in the standard HDF5 data format, which should be straightforward to adapt to other NR codes that support HDF5 input or can be accessed using Python.
 
-Other features that are inherited from Chombo include
-
-- C++ class structure: GRTresna is written in the C++ language, and makes heavy use of object-oriented programming (OOP) and templating.
-    
-- Parallelism: GRTresna uses hybrid OpenMP/MPI parallelism.
-    
-- Adaptive Mesh Refinement: The code inherits the flexible AMR grid structure of Chombo, with block-structured Berger-Rigoutsos grid generation [@Berger:1991]. The tagging of refinement regions is fully flexible and while it is based on the sources of the elliptic equations by default, other user-defined measures can be defined [@Radia:2021smk].
-
-- Fast: The code uses a multigrid method to efficiently reduce errors across a hierarchy of discretizations, enabling the solver to achieve rapid convergence while minimizing computational costs. This makes GRTresna highly optimized for handling the demanding computations of initial data in the presence of AMR.
+The code achieves rapid convergence by using a multigrid method inherited from Chombo. Other features that are inherited from Chombo include C++ class structure, hybrid OpenMP/MPI parallelism, Adaptive Mesh Refinement [@Berger:1991;@Radia:2021smk]. See [@Andrade:2021rbd] for more details.
 
 Forthcoming features currently under development include the addition of other methods, in particular the Extended Conformal Thin Sandwich (XCTS) method, non-conformally flat metric data, new matter types including vector fields, the modified scalar-tensor gravity formalism of Brady et. al. [@Brady:2023dgu] and dimensional reduction to 2D using the cartoon formalism [@Alcubierre:1999ab;@Cook:2016soy].
 
@@ -133,7 +123,7 @@ Forthcoming features currently under development include the addition of other m
 # Statement of Need
 
 
-There are a number of existing initial data solvers for numerical relativity, most of which are primarily designed to solve for initial conditions in compact object mergers (i.e. neutron stars and black holes). These include TwoPunctures [@Ansorg:2004ds], SGRID [@Tichy:2009yr], BAM [@Bruegmann:2006ulg], LORENE [@LORENE;@Gourgoulhon:2000nn], Spells [@Pfeiffer:2002wt], SpECTRE [@Vu:2021coj;@Vu:2024cgf;deppe_2023_8196313] ([@Nee:2024bur] for modified gravity) COCAL [@Uryu:2011ky;@Tsokaros:2012kp;@Tsokaros:2015fea], PCOCAL [@Boukas:2023ckb], Elliptica [@Rashti:2021ihv], NRPyElliptic [@Assumpcao:2021fhq,Tootle:2025ikk], KADATH/FUKA [@FUKA;@Grandclement:2009ju;@Papenfort:2021hod}], SPHINCS\_ID [@SPHINCSID;@Diener:2022hui;@Rosswog:2023nnl], and the solver of East *et al.* [@East:2012zn]. Many of these codes, particularly those using spectral methods like TwoPunctures and SpECTRE, provide a higher accuracy in the solution compared to GRTresna, which is limited to second order accuracy by the multigrid method used. They are therefore better suited to initial data for waveform generation where precision is key. GRTresna is, however, designed to be more flexible and general purpose, tackling both cosmological and black hole spacetimes in a range of scenarios beyond GR and the Standard Model.
+There are a number of existing initial data solvers for numerical relativity, most of which are primarily designed to solve for initial conditions in compact object mergers (i.e. neutron stars and black holes). These include TwoPunctures [@Ansorg:2004ds], SGRID [@Tichy:2009yr], BAM [@Bruegmann:2006ulg], LORENE [@LORENE;@Gourgoulhon:2000nn], Spells [@Pfeiffer:2002wt], SpECTRE [@Vu:2021coj;@Vu:2024cgf;deppe_2023_8196313] ([@Nee:2024bur] for modified gravity) COCAL [@Uryu:2011ky;@Tsokaros:2012kp;@Tsokaros:2015fea], PCOCAL [@Boukas:2023ckb], Elliptica [@Rashti:2021ihv], NRPyElliptic [@Assumpcao:2021fhq,@Tootle:2025ikk], KADATH/FUKA [@FUKA;@Grandclement:2009ju;@Papenfort:2021hod}], SPHINCS\_ID [@SPHINCSID;@Diener:2022hui;@Rosswog:2023nnl], and the solver of East *et al.* [@East:2012zn]. Many of these codes, particularly those using spectral methods like TwoPunctures and SpECTRE, provide a higher accuracy in the solution compared to GRTresna, which is limited to second order accuracy by the multigrid method used. They are therefore better suited to initial data for waveform generation where precision is key. GRTresna is, however, designed to be more flexible and general purpose, tackling both cosmological and black hole spacetimes in a range of scenarios beyond GR and the Standard Model.
 
 In particular, to the best of our knowledge, there is no fully general, publicly available initial condition solver for inhomogeneous cosmological spacetimes. One exception is FLRWSolver, developed by Macpherson \emph{et al.} [@Macpherson:2016ict] as part of the Einstein Toolkit [@Loffler:2011ay], which specializes in initializing data for cosmological perturbations arising from inflation for studies of late-time cosmology. However, this is limited to only weakly non-linear initial data. GRTresna aims to provide an open-source tool that not only incorporates the general features of existing initial data solvers for compact objects in GR but also extends their capabilities to cosmological spacetimes (see [@Aurrekoetxea:2024mdy] for a review of the application of numerical relativity in cosmology). GRTresna is particularly well-suited for fundamental field matter types, such as scalar and vector fields. Its flexible design allows users to implement new solver methods, additional matter types, or extend the code to study theories beyond GR. It is fully compatible with the GRTL Collaboration's ecosystem of codes but can also serve as a complementary tool for generating constraint-satisfying initial data for other numerical relativity codes.
 
