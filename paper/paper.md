@@ -127,7 +127,7 @@ There are a number of existing initial data solvers for numerical relativity, mo
 
 In particular, to the best of our knowledge, there is no fully general, publicly available initial condition solver for inhomogeneous cosmological spacetimes. One exception is FLRWSolver, developed by Macpherson \emph{et al.} [@Macpherson:2016ict] as part of the Einstein Toolkit [@Loffler:2011ay], which specializes in initializing data for cosmological perturbations arising from inflation for studies of late-time cosmology. However, this is limited to only weakly non-linear initial data. GRTresna aims to provide an open-source tool that not only incorporates the general features of existing initial data solvers for compact objects in GR but also extends their capabilities to cosmological spacetimes (see [@Aurrekoetxea:2024mdy] for a review of the application of numerical relativity in cosmology). GRTresna is particularly well-suited for fundamental field matter types, such as scalar and vector fields. Its flexible design allows users to implement new solver methods, additional matter types, or extend the code to study theories beyond GR. It is fully compatible with the GRTL Collaboration's ecosystem of codes but can also serve as a complementary tool for generating constraint-satisfying initial data for other numerical relativity codes.
 
-# Key research projects using GRChombo
+# Key research projects using GRTresna
 
 The code has already been used successfully to study a range of problems in fundamental physics, including:
 - The robustness of inflation to inhomogeneities in the scalar field [@Aurrekoetxea:2019fhr;@Elley:2024alx].
