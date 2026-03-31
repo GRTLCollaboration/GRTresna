@@ -15,7 +15,7 @@ authors:
 - name: Sam E. Brady
   orcid: 0009-0000-5568-839X
   affiliation: 2
-- name: Llibert Areste Salo
+- name: Llibert Aresté Saló
   orcid: 0000-0002-3812-8523
   affiliation: 3
 - name: Jamie Bamber
