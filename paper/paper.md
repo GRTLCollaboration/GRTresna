@@ -3,7 +3,7 @@ title: 'GRTresna: An open-source code to solve the initial data constraints in n
 tags:
   - C++
   - MPI
-  - Open MP
+  - OpenMP
   - gravity
   - general relativity
   - numerical relativity
@@ -15,7 +15,8 @@ authors:
 - name: Sam E. Brady
   orcid: 0009-0000-5568-839X
   affiliation: 2
-- name: Llibert Aresté Saló
+- given-names: Llibert
+  surname: Aresté Saló
   orcid: 0000-0002-3812-8523
   affiliation: 3
 - name: Jamie Bamber
@@ -57,7 +58,7 @@ affiliations:
 - name: Geometry, Analysis and Gravitation, School of Mathematical Sciences, Queen Mary University of London, Mile End Road, London E1 4NS, United Kingdom
   index: 2
 - name: Institute for Theoretical Physics, KU Leuven, Celestijnenlaan 200D, B-3001 Leuven, Belgium
-  index: 3  
+  index: 3
 - name: Department of Physics, University of Illinois Urbana-Champaign, Urbana, IL 61801, USA
   index: 4
 - name: Theoretical Particle Physics and Cosmology, King's College London, Strand, London, WC2R 2LS, United Kingdom
@@ -75,11 +76,11 @@ bibliography: paper.bib
 
 ---
 
-GRTresna is a multigrid solver designed to solve the constraint equations for the initial data required in numerical relativity simulations. In particular it is focussed on scenarios with fundamental fields around black holes and inhomogeneous cosmological spacetimes. The following overview has been prepared as part of the submission of the code to the Journal of Open Source Software. The code is based on the formalism in Aurrekoetxea, Clough \& Lim [@Aurrekoetxea:2022mpw] and can be found at [github.com/GRTLCollaboration/GRTresna](github.com/GRTLCollaboration/GRTresna)
+GRTresna is a multigrid solver designed to solve the constraint equations for the initial data required in numerical relativity simulations. In particular, it is focussed on scenarios with fundamental fields around black holes and inhomogeneous cosmological spacetimes. The code is based on the formalism in @Aurrekoetxea:2022mpw.
 
 # Summary
 
-Numerical relativity (NR) is a tool for the solution of the Einstein Equations, which describe gravity in strong field regimes. The equations can be expressed as a set of coupled partial differential equations (PDEs) for the 10 metric quantities $g_{\mu\nu}$ and their time derivatives $\partial_t g_{\mu\nu}$. NR is primarily focussed on the hyperbolic PDEs that describe their time evolution from an initial data set, but the initial data itself must satisfy a set of four coupled non-linear elliptic PDEs known as the Hamiltonian and momentum constraints. Whilst these constraints can be solved more straightforwardly by making certain assumptions, this significantly restricts the range of physical scenarios that can be studied. A general solver therefore expands the physics that NR evolutions can be used to probe. 
+Numerical relativity (NR) is a tool for the solution of the Einstein Equations, which describe gravity in strong field regimes. The equations can be expressed as a set of coupled partial differential equations (PDEs) for the 10 metric quantities $g_{\mu\nu}$ and their time derivatives $\partial_t g_{\mu\nu}$. NR is primarily focussed on the hyperbolic PDEs that describe their time evolution from an initial data set, but the initial data itself must satisfy a set of four coupled non-linear elliptic PDEs known as the Hamiltonian and momentum constraints. Whilst these constraints can be solved more straightforwardly by making certain assumptions, this significantly restricts the range of physical scenarios that can be studied. A general solver therefore expands the physics that NR evolutions can be used to probe.
 
 In the ADM form of the Einstein Equations [@Arnowitt:1962hi], we slice the spacetime into 3-dimensional hypersurfaces
 
@@ -94,38 +95,38 @@ $$M_i \equiv D^j (K_{ij}- \gamma_{ij} K) - 8\pi S_i = 0.$$
 Here, $\gamma_{ij}$ is the 3-metric of the hypersurface, $R$ is the Ricci scalar associated to this metric, and $K_{ij}\sim \partial_t \gamma_{ij}$ is the extrinsic curvature tensor, with $K=\gamma^{ij}K_{ij}$ its trace. The decomposed components of the stress-energy tensor of matter $T^{\mu\nu}$ (measured by normal observers) are defined as $\rho = n_\mu n_\nu T^{\mu\nu}$ and $S_i = -\gamma_{i\mu} n_\nu T^{\mu\nu}$, where $n_\mu = (-\alpha,0,0,0)$. These equations constitute the set of four PDEs that GRTresna solves.
 
 
-The two main methods for finding initial conditions in numerical relativity are the *conformal transverse-traceless* (CTT) and the *conformal thin sandwich* (CTS) approaches.  We refer the reader to the standard NR texts [@Alcubierre:2008co;@Gourgoulhon:2007ue;@Baumgarte:2010ndz;@Baumgarte:2021skc;@Shibata_book] for more details about these. GRTresna implements two variations of the CTT method recently introduced in Aurrekoetxea, Clough \& Lim [@Aurrekoetxea:2022mpw]: the CTTK and CTTK-Hybrid methods, which are particularly well-suited to cases with fundamental fields in the matter content. Documentation about using and modifying GRTresna can be found in the code wiki [github.com/GRTLCollaboration/GRTresna/wiki](github.com/GRTLCollaboration/GRTresna/wiki).
+The two main methods for finding initial conditions in numerical relativity are the *conformal transverse-traceless* (CTT) and the *conformal thin sandwich* (CTS) approaches.  We refer the reader to the standard NR texts [@Alcubierre:2008co;@Gourgoulhon:2007ue;@Baumgarte:2010ndz;@Baumgarte:2021skc;@Shibata_book] for more details about these. GRTresna implements two variations of the CTT method recently introduced in @Aurrekoetxea:2022mpw: the CTTK and CTTK-Hybrid methods, which are particularly well-suited to cases with fundamental fields in the matter content. Documentation about using and modifying GRTresna can be found in the [code wiki](https://github.com/GRTLCollaboration/GRTresna/wiki).
 
 ![plot_grtresna](plot.png)
-*Some highlights of work using GRTresna to date: (Left:) Dark matter around binary black holes, from [@Bamber:2022pbs;@Aurrekoetxea:2023jwk;@Aurrekoetxea:2024cqd] (Middle:) Evolution of inflationary perturbations during preheating, from [@Aurrekoetxea:2023jwd]. (Right:) Scalar fields around black holes in* $4\partial ST$ *gravity, from [@Brady:2023dgu]*
+*Some highlights of work using GRTresna to date: (Left:) Dark matter around binary black holes [@Bamber:2022pbs;@Aurrekoetxea:2023jwk;@Aurrekoetxea:2024cqd]. (Middle:) Evolution of inflationary perturbations during preheating [@Aurrekoetxea:2023jwd]. (Right:) Scalar fields around black holes in* $4\partial ST$ *gravity [@Brady:2023dgu]*
 
 # Key features of GRTresna
 
-The key features of GRTresna are as follows
+The key features of GRTresna are as follows.
 
-- Flexibility: GRTresna is designed to be extended to various physical scenarios, including different matter types and gravitational theories beyond GR. It currently supports cosmological-type periodic spacetimes and a superposition of two boosted and/or spinning black holes (Bowen-York initial data), with fully general scalar field matter source configurations and the flexibility to adapt to other setups. While scalar fields are the only matter sources included in the current version of the code, the templated methods allow users to easily replace them with other matter types by copying the scalar field implementation and modifying the methods to compute the corresponding energy and momentum densities.
-    
-- Methods: GRTresna incorporates the CTTK and CTTK-Hybrid methods to solve the Hamiltonian and momentum constraints. These methods offer several advantages when dealing with fundamental fields, as discussed in [@Aurrekoetxea:2022mpw]. The method code is also templated, so users can easily implement their preferred methods.
+- Flexibility: GRTresna is designed to be extended to various physical scenarios, including different matter types and gravitational theories beyond GR. It currently supports cosmological-type periodic spacetimes and a superposition of two boosted and/or spinning black holes (Bowen--York initial data), with fully general scalar field matter source configurations and the flexibility to adapt to other setups. While scalar fields are the only matter sources included in the current version of the code, the templated methods allow users to easily replace them with other matter types by copying the scalar field implementation and modifying the methods to compute the corresponding energy and momentum densities.
+
+- Methods: GRTresna incorporates the CTTK and CTTK-Hybrid methods to solve the Hamiltonian and momentum constraints. These methods offer several advantages when dealing with fundamental fields, as discussed in @Aurrekoetxea:2022mpw. The method code is also templated, so users can easily implement their preferred methods.
 
 - Initial conditions: The code supports analytical initial data for the matter fields, as well as the option to read grids and data from an existing HDF5 file. This functionality is especially useful when combined with our code that evolves matter on fixed metric backgrounds GRDzhadzha [@Aurrekoetxea:2023fhl], meaning that we can upgrade the resulting matter configurations to full NR simulations with backreaction.
-    
+
 - Boundary conditions: The code implements extrapolating, reflective, and periodic boundary conditions, compatible with those in the NR evolution code GRChombo [@Andrade:2021rbd;@Clough:2015sqa].
 
 - Diagnostics: The code computes the Hamiltonian and momentum constraint errors at each iteration step, and outputs the norm of these values across the grid to a text file.
 
 - Compatibility: As GRTresna is developed on top of Chombo, the solver is primarily designed to be compatible with GRChombo [@Andrade:2021rbd;@Clough:2015sqa] and the family of codes developed by the GRTL Collaboration. We provide two examples that integrate directly with existing examples in the GRChombo evolution code (via the output of a checkpoint file for restart at $t=0$), and provide guidance and tools to validate the results. However, the code outputs data in the standard HDF5 data format, which should be straightforward to adapt to other NR codes that support HDF5 input or can be accessed using Python.
 
-The code achieves rapid convergence by using a multigrid method inherited from Chombo. Other features that are inherited from Chombo include C++ class structure, hybrid OpenMP/MPI parallelism, Adaptive Mesh Refinement [@Berger:1991;@Radia:2021smk]. See [@Andrade:2021rbd] for more details.
+The code achieves rapid convergence by using a multigrid method inherited from Chombo. Other features that are inherited from Chombo include C++ class structure, hybrid OpenMP/MPI parallelism, Adaptive Mesh Refinement [@Berger:1991;@Radia:2021smk]. See @Andrade:2021rbd for more details.
 
-Forthcoming features currently under development include the addition of other methods, in particular the Extended Conformal Thin Sandwich (XCTS) method, non-conformally flat metric data, new matter types including vector fields, the modified scalar-tensor gravity formalism of Brady et. al. [@Brady:2023dgu] and dimensional reduction to 2D using the cartoon formalism [@Alcubierre:1999ab;@Cook:2016soy].
-
-
-# Statement of Need
+Forthcoming features currently under development include the addition of other methods, in particular the Extended Conformal Thin Sandwich (XCTS) method, non-conformally flat metric data, new matter types including vector fields, the modified scalar-tensor gravity formalism of @Brady:2023dgu and dimensional reduction to 2D using the cartoon formalism [@Alcubierre:1999ab;@Cook:2016soy].
 
 
-There are a number of existing initial data solvers for numerical relativity, most of which are primarily designed to solve for initial conditions in compact object mergers (i.e. neutron stars and black holes). These include TwoPunctures [@Ansorg:2004ds], SGRID [@Tichy:2009yr], BAM [@Bruegmann:2006ulg], LORENE [@Gourgoulhon:2000nn], Spells [@Pfeiffer:2002wt], SpECTRE [@Vu:2021coj;@Vu:2024cgf;@deppe_2023_8196313] ([@Nee:2024bur] for modified gravity), COCAL [@Uryu:2011ky;@Tsokaros:2012kp;@Tsokaros:2015fea], PCOCAL [@Boukas:2023ckb], Elliptica [@Rashti:2021ihv], NRPyElliptic [@Assumpcao:2021fhq;@Tootle:2025ikk], KADATH/FUKA [@Grandclement:2009ju;@Papenfort:2021hod], SPHINCS\_ID [@Diener:2022hui;@Rosswog:2023nnl], and the solver of East *et al.* [@East:2012zn]. Many of these codes, particularly those using spectral methods like TwoPunctures and SpECTRE, provide a higher accuracy in the solution compared to GRTresna, which is limited to second order accuracy by the multigrid method used. They are therefore better suited to initial data for waveform generation where precision is key. GRTresna is, however, designed to be more flexible and general purpose, tackling both cosmological and black hole spacetimes in a range of scenarios beyond GR and the Standard Model.
+# Statement of need
 
-In particular, to the best of our knowledge, there is no fully general, publicly available initial condition solver for inhomogeneous cosmological spacetimes. One exception is FLRWSolver, developed by Macpherson \emph{et al.} [@Macpherson:2016ict] as part of the Einstein Toolkit [@Loffler:2011ay], which specializes in initializing data for cosmological perturbations arising from inflation for studies of late-time cosmology. However, this is limited to only weakly non-linear initial data. GRTresna aims to provide an open-source tool that not only incorporates the general features of existing initial data solvers for compact objects in GR but also extends their capabilities to cosmological spacetimes (see [@Aurrekoetxea:2024ypv] for a review of the application of numerical relativity in cosmology). GRTresna is particularly well-suited for fundamental field matter types, such as scalar and vector fields. Its flexible design allows users to implement new solver methods, additional matter types, or extend the code to study theories beyond GR. It is fully compatible with the GRTL Collaboration's ecosystem of codes but can also serve as a complementary tool for generating constraint-satisfying initial data for other numerical relativity codes.
+
+There are a number of existing initial data solvers for numerical relativity, most of which are primarily designed to solve for initial conditions in compact object mergers (i.e. neutron stars and black holes). These include TwoPunctures [@Ansorg:2004ds], SGRID [@Tichy:2009yr], BAM [@Bruegmann:2006ulg], LORENE [@Gourgoulhon:2000nn], Spells [@Pfeiffer:2002wt], SpECTRE [@Vu:2021coj;@Vu:2024cgf;@deppe_2023_8196313;@Nee:2024bur for modified gravity], COCAL [@Uryu:2011ky;@Tsokaros:2012kp;@Tsokaros:2015fea], PCOCAL [@Boukas:2023ckb], Elliptica [@Rashti:2021ihv], NRPyElliptic [@Assumpcao:2021fhq;@Tootle:2025ikk], KADATH/FUKA [@Grandclement:2009ju;@Papenfort:2021hod], SPHINCS\_ID [@Diener:2022hui;@Rosswog:2023nnl], and the solver of @East:2012zn. Many of these codes, particularly those using spectral methods like TwoPunctures and SpECTRE, provide a higher accuracy in the solution compared to GRTresna, which is limited to second order accuracy by the multigrid method used. They are therefore better suited to initial data for waveform generation where precision is key. GRTresna is, however, designed to be more flexible and general purpose, tackling both cosmological and black hole spacetimes in a range of scenarios beyond GR and the Standard Model.
+
+In particular, to the best of our knowledge, there is no fully general, publicly available initial condition solver for inhomogeneous cosmological spacetimes. One exception is FLRWSolver, developed by @Macpherson:2016ict as part of the Einstein Toolkit [@Loffler:2011ay], which specializes in initializing data for cosmological perturbations arising from inflation for studies of late-time cosmology. However, this is limited to only weakly non-linear initial data. GRTresna aims to provide an open-source tool that not only incorporates the general features of existing initial data solvers for compact objects in GR but also extends their capabilities to cosmological spacetimes [see @Aurrekoetxea:2024ypv, for a review of the application of numerical relativity in cosmology]. GRTresna is particularly well-suited for fundamental field matter types, such as scalar and vector fields. Its flexible design allows users to implement new solver methods, additional matter types, or extend the code to study theories beyond GR. It is fully compatible with the GRTL Collaboration's ecosystem of codes but can also serve as a complementary tool for generating constraint-satisfying initial data for other numerical relativity codes.
 
 # Key research projects using GRTresna
 
@@ -146,11 +147,10 @@ The code has already been used successfully to study a range of problems in fund
 
 # Acknowledgements
 
-We thank the GRTL collaboration [www.grtlcollaboration.org](www.grtlcollaboration.org) for their support and code development work.
+We thank the [GRTL collaboration](https://www.grtlcollaboration.org/) for their support and code development work.
 JCA acknowledges funding from the Department of Physics at MIT. SEB is supported by a QMUL Principal studentship. JB acknowledges funding by the National Science Foundation (NSF) Grants PHY-2308242, OAC-2310548 and PHY-2006066 to the
 University of Illinois at Urbana-Champaign. KC acknowledges funding from the UKRI Ernest Rutherford Fellowship (grant number ST/V003240/1). KC and PF acknowledge funding from STFC Research Grant ST/X000931/1 (Astronomy at Queen Mary 2023-2026). ME has been supported in part by the PID2021-123703NB-C21 grant funded by MCIN/AEI/10.13039/501100011033/and by ERDF: ``A way of making Europe''; the Basque Government grant (IT-1628-22). EAL acknowledges support from a Leverhulme Trust Research Project Grant. AW acknowledges the support of the Development and Promotion of Science and Technology Talents Project (DPST), the Institute for the Promotion of Teaching Science and Technology (IPST), Thailand. ZW is supported by NSF Grants No. AST-2307146, PHY-2207502, PHY-090003 and PHY-20043, by NASA Grant No. 21-ATP21-0010, by the John Templeton Foundation Grant 62840, by the Simons Foundation, and by the Italian Ministry of Foreign Affairs and International Cooperation grant No. PGR01167.
 
-Development of this code used the DiRAC Memory Intensive services Cosma8 and Cosma7 at Durham University, managed by the Institute for Computational Cosmology on behalf of the STFC DiRAC HPC Facility [www.dirac.ac.uk](www.dirac.ac.uk). The DiRAC service at Durham was funded by BEIS, UKRI and STFC capital funding, Durham University and STFC operations grants. DiRAC is part of the UKRI Digital Research Infrastructure.
+Development of this code used the DiRAC Memory Intensive services Cosma8 and Cosma7 at Durham University, managed by the Institute for Computational Cosmology on behalf of the STFC [DiRAC HPC Facility](https://dirac.ac.uk/). The DiRAC service at Durham was funded by BEIS, UKRI and STFC capital funding, Durham University and STFC operations grants. DiRAC is part of the UKRI Digital Research Infrastructure.
 
 # References
-
