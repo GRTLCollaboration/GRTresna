@@ -108,7 +108,7 @@ The key features of GRTresna are as follows.
 
 - Methods: GRTresna incorporates the CTTK and CTTK-Hybrid methods to solve the Hamiltonian and momentum constraints. These methods offer several advantages when dealing with fundamental fields, as discussed in @Aurrekoetxea:2022mpw. The method code is also templated, so users can easily implement their preferred methods.
 
-- Initial conditions: The code supports analytical initial data for the matter fields, as well as the option to read grids and data from an existing HDF5 file. This functionality is especially useful when combined with our code that evolves matter on fixed metric backgrounds GRDzhadzha [@Aurrekoetxea:2023fhl], meaning that we can upgrade the resulting matter configurations to full NR simulations with backreaction.
+- Initial conditions: The code supports analytical initial data for the matter fields, as well as the option to read grids and data from an existing HDF5 file. This functionality is especially useful when combined with our GRDzhadzha code [@Aurrekoetxea:2023fhl], which evolves matter on fixed metric backgrounds, meaning that we can upgrade the resulting matter configurations to full NR simulations with backreaction.
 
 - Boundary conditions: The code implements extrapolating, reflective, and periodic boundary conditions, compatible with those in the NR evolution code GRChombo [@Andrade:2021rbd;@Clough:2015sqa].
 
